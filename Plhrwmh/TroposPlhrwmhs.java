@@ -17,7 +17,7 @@ public class TroposPlhrwmhs extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private boolean karta;
+	private boolean type;
 
 	/**
 	 * Launch the application.
@@ -55,7 +55,7 @@ public class TroposPlhrwmhs extends JFrame {
 		rdbtn_metrhta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				karta=false;
+				type=false;
 			}
 		});
 		rdbtn_metrhta.setSelected(true);
@@ -67,7 +67,7 @@ public class TroposPlhrwmhs extends JFrame {
 		rdbtn_karta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				karta=true;
+				type=true;
 			}
 		});
 		buttonGroup.add(rdbtn_karta);
@@ -78,7 +78,7 @@ public class TroposPlhrwmhs extends JFrame {
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(karta) {
+				if(type) {
 					
 					dispose();
 					StoixeiaKartas scr = new StoixeiaKartas();
