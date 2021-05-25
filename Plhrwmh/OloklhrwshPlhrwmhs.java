@@ -54,6 +54,12 @@ public class OloklhrwshPlhrwmhs extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnOK = new JButton("OK");
+		btnOK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+			}
+		});
 		btnOK.setBounds(126, 171, 89, 23);
 		contentPane.add(btnOK);
 		

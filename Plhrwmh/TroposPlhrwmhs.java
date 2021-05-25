@@ -10,11 +10,14 @@ import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TroposPlhrwmhs extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private boolean karta;
 
 	/**
 	 * Launch the application.
@@ -49,17 +52,47 @@ public class TroposPlhrwmhs extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JRadioButton rdbtn_metrhta = new JRadioButton("Plhrwmh me metrhta");
+		rdbtn_metrhta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				karta=false;
+			}
+		});
 		rdbtn_metrhta.setSelected(true);
 		buttonGroup.add(rdbtn_metrhta);
 		rdbtn_metrhta.setBounds(110, 58, 158, 23);
 		contentPane.add(rdbtn_metrhta);
 		
 		JRadioButton rdbtn_karta = new JRadioButton("Plhrwmh me karta");
+		rdbtn_karta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				karta=true;
+			}
+		});
 		buttonGroup.add(rdbtn_karta);
 		rdbtn_karta.setBounds(110, 111, 158, 23);
 		contentPane.add(rdbtn_karta);
 		
 		JButton btnOK = new JButton("OK");
+		btnOK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(karta) {
+					
+					dispose();
+					StoixeiaKartas scr = new StoixeiaKartas();
+					scr.setVisible(true);
+					
+				}else {
+					
+					dispose();
+					OloklhrwshPlhrwmhs scr = new OloklhrwshPlhrwmhs();
+					scr.setVisible(true);
+					
+				}
+			}
+		});
 		btnOK.setBounds(124, 187, 89, 23);
 		contentPane.add(btnOK);
 		
