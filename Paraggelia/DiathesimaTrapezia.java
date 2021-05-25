@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DiathesimaTrapezia extends JFrame {
 
@@ -49,6 +51,13 @@ public class DiathesimaTrapezia extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnEpilogTrapeziou = new JButton("epilogh");
+		btnEpilogTrapeziou.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				dispose();
+				
+			}
+		});
 		btnEpilogTrapeziou.setBounds(123, 249, 89, 23);
 		contentPane.add(btnEpilogTrapeziou);
 		

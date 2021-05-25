@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 
@@ -103,6 +105,13 @@ public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 		textField_4.setColumns(10);
 		
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				dispose();
+				
+			}
+		});
 		btnNewButton.setBounds(131, 225, 89, 23);
 		contentPane.add(btnNewButton);
 	}

@@ -17,6 +17,7 @@ public class TroposParadoshs extends JFrame {
     
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private boolean takeaway;
 
 	/*** Launch the application.*/
 	public static void main(String[] args) {
@@ -49,17 +50,38 @@ public class TroposParadoshs extends JFrame {
 		contentPane.add(lbl_msg);
 		
 		JRadioButton rdbtn_entos = new JRadioButton("Entos tou xwrou");
+		rdbtn_entos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				takeaway = false;
+				
+			}
+		});
 		buttonGroup.add(rdbtn_entos);
 		rdbtn_entos.setSelected(true);
 		rdbtn_entos.setBounds(125, 64, 150, 23);
 		contentPane.add(rdbtn_entos);
 		
 		JRadioButton rdbtn_delivery = new JRadioButton("Delivery sto spiti");
+		rdbtn_delivery.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				takeaway = true;
+				
+			}
+		});
 		buttonGroup.add(rdbtn_delivery);
 		rdbtn_delivery.setBounds(125, 100, 150, 23);
 		contentPane.add(rdbtn_delivery);
 		
 		JRadioButton rdbtn_takeaway = new JRadioButton("Take Away");
+		rdbtn_takeaway.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				takeaway = true;
+				
+			}
+		});
 		buttonGroup.add(rdbtn_takeaway);
 		rdbtn_takeaway.setBounds(125, 136, 150, 23);
 		contentPane.add(rdbtn_takeaway);
@@ -71,6 +93,25 @@ public class TroposParadoshs extends JFrame {
 		contentPane.add(lbl_logo);
 		
 		JButton btn_OK = new JButton("OK");
+		btn_OK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(takeaway) {
+					
+					dispose();
+					Delivery_SumplhrwshStoixeiwn scr = new Delivery_SumplhrwshStoixeiwn();
+					scr.setVisible(true);
+					
+				}else {
+					
+					dispose();
+					DiathesimaTrapezia scr = new DiathesimaTrapezia();
+					scr.setVisible(true);
+					
+				}
+				
+			}
+		});
 		btn_OK.setBounds(142, 189, 89, 23);
 		contentPane.add(btn_OK);
 	}

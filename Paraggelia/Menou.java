@@ -13,6 +13,8 @@ import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Menou extends JFrame {
 
@@ -51,6 +53,15 @@ public class Menou extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Place Order");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				dispose();
+				TroposParadoshs delivery = new TroposParadoshs();
+				delivery.setVisible(true);
+				
+			}
+		});
 		btnNewButton.setBounds(116, 236, 108, 23);
 		contentPane.add(btnNewButton);
 		
