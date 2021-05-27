@@ -45,6 +45,7 @@ public class Apothiki {
 		frame = new JFrame("P.Diner.A. Apothiki");
 		frame.setBounds(100, 100, 440, 402);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true); //Des to, den mou to emfanizei alliws otan thn kalw apo ta dika mou
 		
 		ImageIcon png = new ImageIcon("src/logo.png");
 		frame.getContentPane().setLayout(null);
