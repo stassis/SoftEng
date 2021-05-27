@@ -20,8 +20,8 @@ public class MainMenu {
 		btnApothiki.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				f.dispose();
-				new Apothiki();
-				
+				Apothiki newwindow = new Apothiki();
+				newwindow.showapothiki();
 			}
 		});
 		GridBagConstraints gbc_btnApothiki = new GridBagConstraints();
@@ -45,6 +45,16 @@ public class MainMenu {
 		f.getContentPane().add(btnMenu, gbc_btnMenu);
 		
 		JButton btnVardia = new JButton("Vardia");
+		btnVardia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				f.dispose();
+				
+				Vardia var = new Vardia();
+				var.showmain();
+				
+			}
+		});
 		GridBagConstraints gbc_btnVardia = new GridBagConstraints();
 		gbc_btnVardia.gridx = 5;
 		gbc_btnVardia.gridy = 2;
