@@ -20,8 +20,8 @@ public class MainMenu {
 		btnApothiki.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				f.dispose();
-				Apothiki apo = new Apothiki();
-				apo.initialize();
+				new Apothiki();
+				
 			}
 		});
 		GridBagConstraints gbc_btnApothiki = new GridBagConstraints();
