@@ -1,18 +1,40 @@
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.AbstractListModel;
+import javax.swing.JTable;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.sql.*;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextArea;
 
 public class AlloiwmenaYlika {
 
 	private JFrame frame;
-
+	private JTable table;
+	//private String fagito;
+    //private int posotita;
+    Date date = new Date();
+    
 	/**
 	 * Launch the application.
 	 */
@@ -35,18 +57,23 @@ public class AlloiwmenaYlika {
 
 	/**
 	 * Create the application.
+	 * @throws SQLException 
 	 */
-	public AlloiwmenaYlika() {
+	public AlloiwmenaYlika() throws SQLException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws SQLException 
 	 */
-	private void initialize() {
+	private void initialize() throws SQLException {
 		frame = new JFrame("P.Diner.A. Alloiwmena Ylika");
-		frame.setBounds(100, 100, 440, 402);
+		frame.setBounds(100, 100, 436, 402);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        frame.setIconImage(icon);
 		
 		ImageIcon png = new ImageIcon("src/logo.png");
 		frame.getContentPane().setLayout(null);
@@ -71,24 +98,94 @@ public class AlloiwmenaYlika {
         lblAlloiwmenaYlika.setBounds(157, 32, 126, 15);
         frame.getContentPane().add(lblAlloiwmenaYlika);
         
-        JList list = new JList();
-        list.setModel(new AbstractListModel() {
-        	String[] values = new String[] {"patates,3", "tomato,1"};
-        	public int getSize() {
-        		return values.length;
-        	}
-        	public Object getElementAt(int index) {
-        		return values[index];
-        	}
-        });
-        list.setBounds(116, 97, 168, 104);
-        frame.getContentPane().add(list);
-        
-        
+        try {
+        	
+        	
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM food WHERE Imerominia <= '2021-06-01'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//PreparedStatement pst = connection.prepareStatement(sql);
+			//pst.setString(1, textFieldSearch.getText());
+			//ResultSet rs = pst.executeQuery();
+			//System.out.println("Fagito     Posotita     Imerominia");
+			
+			//String[] columnNames = {"Fagito", "Posotita", "Imerominia"};
+			
+			
+			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Fagito", "Posotita", "Imerominia","Oriaellipsis"}, 0){
+
+			    @Override
+			    public boolean isCellEditable(int row, int column) {
+			       //ola ta kelia mh epexergasima
+			       return false;
+			    }
+			};
+			
+			
+			while (rs.next()) {
+	            
+	            String fagito = rs.getString("Fagito");
+	            int posotita = rs.getInt("Posotita");
+	            String date = rs.getDate("Imerominia").toString();
+	            int oriaell = rs.getInt("Oriaellipsis");
+	            
+	            //System.out.println(fagito+"    "+posotita+"            "+date);
+	            
+	            String[] data = { fagito, Integer.toString(posotita), date, Integer.toString(oriaell)};
+	            tableModel.addRow(data);
+	            //model.addRow(new Object[]{fagito,posotita,date});
+	            
+	         }
+
+			//JTable jt = new JTable(new DefaultTableModel(columnNames, 0));
+			//JTable jt = new JTable(tableModel);
+			JTable jt = new JTable(tableModel);
+			
+			JScrollPane js=new JScrollPane(jt);
+			//js.setVisible(true);
+			
+			js.setBounds(38, 99, 276, 104);
+			frame.getContentPane().add(js);
+			
+			c.close();
+			stmt.close();
+			rs.close();
+			
+		}catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
         
         JButton btnAfairesi = new JButton("Afairesi");
-        btnAfairesi.setBounds(311, 110, 98, 25);
+        btnAfairesi.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		try {
+        			
+        			Class.forName("com.mysql.cj.jdbc.Driver");
+					Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+	        		Statement stmt = c.createStatement();
+	        		String sql = "DELETE FROM food WHERE Imerominia <= '2021-05-31'";
+	    			stmt.executeUpdate(sql);
+	    			
+	    			c.close();
+	    			stmt.close();
+	    			
+	    			JOptionPane.showMessageDialog(null, "Ta lhgmena Ylika afairethikan!");
+	    			
+				} catch (ClassNotFoundException | SQLException e1) {
+					
+					e1.printStackTrace();
+				}
+    			
+        		
+        	}
+        });
+        btnAfairesi.setBounds(324, 111, 98, 25);
         frame.getContentPane().add(btnAfairesi);
+        
+        
 	}
-
 }

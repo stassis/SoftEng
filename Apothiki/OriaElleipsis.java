@@ -3,17 +3,30 @@ import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class OriaElleipsis {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField onomaYlikoy;
+	private JTextField orio;
 
 	/**
 	 * Launch the application.
@@ -50,21 +63,24 @@ public class OriaElleipsis {
 		frame.setBounds(100, 100, 440, 402);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        frame.setIconImage(icon);
+		
 		ImageIcon png = new ImageIcon("src/logo.png");
 		frame.getContentPane().setLayout(null);
 		JLabel logo = new JLabel(png);
 		logo.setBounds(116, 236, 202, 111);
         frame.getContentPane().add(logo);
         
-        textField = new JTextField();
-        textField.setBounds(40, 118, 114, 19);
-        frame.getContentPane().add(textField);
-        textField.setColumns(10);
+        onomaYlikoy = new JTextField();
+        onomaYlikoy.setBounds(40, 118, 114, 19);
+        frame.getContentPane().add(onomaYlikoy);
+        onomaYlikoy.setColumns(10);
         
-        textField_1 = new JTextField();
-        textField_1.setBounds(244, 118, 114, 19);
-        frame.getContentPane().add(textField_1);
-        textField_1.setColumns(10);
+        orio = new JTextField();
+        orio.setBounds(244, 118, 114, 19);
+        frame.getContentPane().add(orio);
+        orio.setColumns(10);
         
         JLabel lblEisageteOnomaYlikoy = new JLabel("Eisagete onoma Ylikoy:");
         lblEisageteOnomaYlikoy.setFont(new Font("Dialog", Font.PLAIN, 10));
@@ -77,6 +93,60 @@ public class OriaElleipsis {
         frame.getContentPane().add(lblNeoOrio);
         
         JButton btnYpovolh = new JButton("Ypovolh");
+        btnYpovolh.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		if(!(onomaYlikoy.getText().length() == 0 || orio.getText().length() == 0)) {
+        			
+        			try {
+        				
+        				int orioInt=Integer.parseInt(orio.getText());
+        			
+        				if(orioInt >= 0) {
+        			
+			        		try {	
+			        			
+			        			Class.forName("com.mysql.cj.jdbc.Driver");
+			        			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+			        			String sql = "UPDATE food SET Oriaellipsis=? WHERE Fagito=?";
+			
+			        			PreparedStatement stmt = c.prepareStatement(sql);
+			        			stmt.setInt(1, orioInt);
+				        		stmt.setString(2, onomaYlikoy.getText());
+				        		
+				        		stmt.execute();
+				        		
+				        		stmt.close();
+				        		c.close();
+				        		
+				        		JOptionPane.showMessageDialog(null, "Oria Ylikoy " + onomaYlikoy.getText() +" allaxan se " + orioInt + "!");
+				        		orio.setText("");
+				        		onomaYlikoy.setText("");
+			        			
+			        		}catch (ClassNotFoundException | SQLException e1) {
+			        			
+			        			e1.printStackTrace();
+			        		}
+        				}else {
+        				
+        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
+        				
+        				}
+        				
+        			}catch(NumberFormatException e1) {
+        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!"); 
+     				   // Here catch NumberFormatException
+     				   // So input is not a int.
+     				 } 		
+        			
+        		}else {
+        			
+        			JOptionPane.showMessageDialog(null, "Symplhrwste stoixeia!");
+        			
+        		}
+        		
+        	}
+        });
         btnYpovolh.setBounds(133, 171, 117, 25);
         frame.getContentPane().add(btnYpovolh);
         
@@ -92,6 +162,7 @@ public class OriaElleipsis {
         });
         btnBack_1.setBounds(12, 43, 67, 15);
         frame.getContentPane().add(btnBack_1);
+         
 	}
 
 }

@@ -1,10 +1,13 @@
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Apothiki {
@@ -52,6 +55,9 @@ public class Apothiki {
 		logo.setBounds(116, 236, 202, 111);
         frame.getContentPane().add(logo);
         
+        Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        frame.setIconImage(icon); 
+        
         JButton btnApothiki = new JButton("Apothiki");
         btnApothiki.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
@@ -85,8 +91,17 @@ public class Apothiki {
         		
         		frame.dispose();
         		
-        		AlloiwmenaYlika newwindow = new AlloiwmenaYlika();
-				newwindow.showpligmenaylika();
+        		AlloiwmenaYlika newwindow;
+				try {
+					
+					newwindow = new AlloiwmenaYlika();
+					newwindow.showpligmenaylika();
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+				
         	}
         });
         btnNewButton.setBounds(116, 150, 193, 25);
