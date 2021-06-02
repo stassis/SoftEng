@@ -55,6 +55,8 @@ public class DiathesimaTrapezia extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				dispose();
+				Menou scr = new Menou();
+				scr.setVisible(true);
 				
 			}
 		});
