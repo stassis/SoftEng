@@ -57,9 +57,8 @@ public class Menou extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				dispose();
-				TroposParadoshs delivery = new TroposParadoshs();
-				delivery.setVisible(true);
-				
+				TroposPlhrwmhs scr = new TroposPlhrwmhs();
+				scr.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(116, 236, 108, 23);
