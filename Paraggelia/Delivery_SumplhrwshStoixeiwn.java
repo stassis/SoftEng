@@ -109,6 +109,8 @@ public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				dispose();
+				Menou scr = new Menou();
+				scr.setVisible(true);
 				
 			}
 		});
