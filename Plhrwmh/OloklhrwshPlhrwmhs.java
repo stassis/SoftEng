@@ -58,6 +58,7 @@ public class OloklhrwshPlhrwmhs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
+				MainMenu scr = new MainMenu();
 			}
 		});
 		btnOK.setBounds(126, 171, 89, 23);
