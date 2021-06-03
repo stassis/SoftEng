@@ -29,7 +29,7 @@ public class PlaisiaEisagogisTimon {
 
 	private JFrame frame;
 	private JTextField onomaYlikoy;
-	private JTextField posotita;
+	private JTextField quantity;
 	
 
 	/**
@@ -83,10 +83,10 @@ public class PlaisiaEisagogisTimon {
         onomaYlikoy.setColumns(10);
         
         
-        posotita = new JTextField();
-        posotita.setBounds(250, 112, 114, 19);
-        frame.getContentPane().add(posotita);
-        posotita.setColumns(10);
+        quantity = new JTextField();
+        quantity.setBounds(250, 112, 114, 19);
+        frame.getContentPane().add(quantity);
+        quantity.setColumns(10);
         
         
         
@@ -109,7 +109,7 @@ public class PlaisiaEisagogisTimon {
         btnProsthiki.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		String textFieldPosotita = posotita.getText();
+        		String textFieldPosotita = quantity.getText();
         		
         		String textFieldYliko = onomaYlikoy.getText();
         		
@@ -141,7 +141,7 @@ public class PlaisiaEisagogisTimon {
 		    	        		c.close();
 		    	        		
 		    	        		JOptionPane.showMessageDialog(null, "To Yliko " + textFieldYliko + " me posotita " + intFieldPosotita +" kataxwrithike!");
-		    	        		posotita.setText("");
+		    	        		quantity.setText("");
 		    	        		onomaYlikoy.setText("");
 		    	    			
 		    				} catch (ClassNotFoundException | SQLException e1) {

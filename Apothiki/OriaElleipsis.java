@@ -25,8 +25,9 @@ import java.awt.event.ActionEvent;
 public class OriaElleipsis {
 
 	private JFrame frame;
-	private JTextField onomaYlikoy;
+	private JTextField name;
 	private JTextField orio;
+	private boolean pass;
 
 	/**
 	 * Launch the application.
@@ -72,20 +73,20 @@ public class OriaElleipsis {
 		logo.setBounds(116, 236, 202, 111);
         frame.getContentPane().add(logo);
         
-        onomaYlikoy = new JTextField();
-        onomaYlikoy.setBounds(40, 118, 114, 19);
-        frame.getContentPane().add(onomaYlikoy);
-        onomaYlikoy.setColumns(10);
+        name = new JTextField();
+        name.setBounds(40, 118, 114, 19);
+        frame.getContentPane().add(name);
+        name.setColumns(10);
         
         orio = new JTextField();
         orio.setBounds(244, 118, 114, 19);
         frame.getContentPane().add(orio);
         orio.setColumns(10);
         
-        JLabel lblEisageteOnomaYlikoy = new JLabel("Eisagete onoma Ylikoy:");
-        lblEisageteOnomaYlikoy.setFont(new Font("Dialog", Font.PLAIN, 10));
-        lblEisageteOnomaYlikoy.setBounds(40, 91, 114, 15);
-        frame.getContentPane().add(lblEisageteOnomaYlikoy);
+        JLabel lblEisagetename = new JLabel("Eisagete onoma Ylikoy:");
+        lblEisagetename.setFont(new Font("Dialog", Font.PLAIN, 10));
+        lblEisagetename.setBounds(40, 91, 114, 15);
+        frame.getContentPane().add(lblEisagetename);
         
         JLabel lblNeoOrio = new JLabel("Neo Orio:");
         lblNeoOrio.setFont(new Font("Dialog", Font.PLAIN, 10));
@@ -96,42 +97,77 @@ public class OriaElleipsis {
         btnYpovolh.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		if(!(onomaYlikoy.getText().length() == 0 || orio.getText().length() == 0)) {
+        		if(!(name.getText().length() == 0 || orio.getText().length() == 0)) {
         			
         			try {
         				
         				int orioInt=Integer.parseInt(orio.getText());
         			
         				if(orioInt >= 0) {
-        			
-			        		try {	
+        					
+        					pass = true;
+        					
+        					try {	
 			        			
 			        			Class.forName("com.mysql.cj.jdbc.Driver");
 			        			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
-			        			String sql = "UPDATE food SET Oriaellipsis=? WHERE Fagito=?";
+			        			String sql = "SELECT * FROM food WHERE Fagito=?";
 			
 			        			PreparedStatement stmt = c.prepareStatement(sql);
-			        			stmt.setInt(1, orioInt);
-				        		stmt.setString(2, onomaYlikoy.getText());
+			        			
+				        		stmt.setString(1, name.getText());
 				        		
-				        		stmt.execute();
+				        		ResultSet rs = stmt.executeQuery();
 				        		
+				        		if(!rs.next()) {
+				        			
+				        			JOptionPane.showMessageDialog(null, "To yliko poy eisagate den yparxei!");
+				        			pass = false;
+				        			
+				        			orio.setText("");
+					        		name.setText("");
+				        		}
+				        		
+				        		rs.close();
 				        		stmt.close();
 				        		c.close();
-				        		
-				        		JOptionPane.showMessageDialog(null, "Oria Ylikoy " + onomaYlikoy.getText() +" allaxan se " + orioInt + "!");
-				        		orio.setText("");
-				        		onomaYlikoy.setText("");
 			        			
 			        		}catch (ClassNotFoundException | SQLException e1) {
 			        			
 			        			e1.printStackTrace();
 			        		}
-        				}else {
-        				
-        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
-        				
-        				}
+        					
+        					if(pass) {
+				        		try {	
+				        			
+				        			Class.forName("com.mysql.cj.jdbc.Driver");
+				        			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+				        			String sql = "UPDATE food SET Oriaellipsis=? WHERE Fagito=?";
+				
+				        			PreparedStatement stmt = c.prepareStatement(sql);
+				        			stmt.setInt(1, orioInt);
+					        		stmt.setString(2, name.getText());
+					        		
+					        		stmt.execute();
+					        		
+					        		stmt.close();
+					        		c.close();
+					        		
+					        		JOptionPane.showMessageDialog(null, "Oria Ylikoy " + name.getText() +" allaxan se " + orioInt + "!");
+					        		orio.setText("");
+					        		name.setText("");
+				        			
+				        		}catch (ClassNotFoundException | SQLException e1) {
+				        			
+				        			e1.printStackTrace();
+				        		}
+        					}
+        					
+	        				}else {
+	        				
+	        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
+	        				
+	        				}
         				
         			}catch(NumberFormatException e1) {
         				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!"); 
