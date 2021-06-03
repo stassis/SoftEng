@@ -101,7 +101,7 @@ public class StoixeiaKartas extends JFrame {
 		txtCCV2.setColumns(10);
 		
 		JButton btnNewButton = new JButton("OK");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton.addActionListener(new ActionListener()) {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
