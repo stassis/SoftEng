@@ -59,7 +59,7 @@ public class OloklhrwshPlhrwmhs extends JFrame {
 				
 				dispose();
 				MainMenu scr = new MainMenu();
-				scr.setVisible(true);
+				//scr.setVisible(true);
 			}
 		});
 		btnOK.setBounds(126, 171, 89, 23);
