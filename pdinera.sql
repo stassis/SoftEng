@@ -90,6 +90,8 @@ ALTER TABLE `user2`
 COMMIT;
 
 
+-- --------------------------------------------------------
+
 CREATE TABLE `orders` (
   `order_id` int(10) NOT NULL,
   `customer_id` int(10) NOT NULL,
