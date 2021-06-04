@@ -89,6 +89,72 @@ ALTER TABLE `user2`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
+
+CREATE TABLE `orders` (
+  `order_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `quantity1` int(10) NOT NULL,
+  `quantity2` int(10) NOT NULL,
+  `quantity3` int(10) NOT NULL,
+  `quantity4` int(10) NOT NULL,
+  `flag` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+CREATE TABLE `plate` (
+  `id` int(10) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `price` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `plate`
+--
+
+INSERT INTO `plate` (`id`, `name`, `price`) VALUES
+(1, 'Rise', 8),
+(2, 'Pizza', 12),
+(3, 'Chicken', 8),
+(4, 'Beef', 10);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `plate`
+--
+ALTER TABLE `plate`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `plate`
+--
+ALTER TABLE `plate`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
