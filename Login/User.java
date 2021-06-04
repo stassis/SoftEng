@@ -2,11 +2,11 @@ import java.sql.*;
 
 
 public class User {
-	 private String id, Role, Password;
+	 private String Role, Password;
+	 private int id;
 	 	 
-	 public User(String id,String Role,String Password)
-	 {this.id=id;
-	 this.Role=Role;
+	 public User(String Role,String Password)
+	 {this.Role=Role;
 	 this.Password=Password;
 	 
 	 try

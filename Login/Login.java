@@ -18,7 +18,8 @@
         JButton enter=new JButton("Enter");
         //JTextField tfid = new JTextField();
         JTextField tf=new JTextField();
-        String role, id, pass;
+        String role, pass;
+        int sw; //switch to dispose after completion
         
         
         public Login (){
@@ -50,7 +51,7 @@
             	msg.setText("Enter your Password");
             	f.add(tf);
             	f.add(enter);
-            	role = "customer";
+            	role = "Customer";
             	f.setVisible(false);f.setVisible(true);
             	}});
         
@@ -68,17 +69,17 @@
             	msg.setText("Enter your Password");
             	f.add(tf);
             	f.add(enter);
-            	role = "owner";
+            	role = "Owner";
             	f.setVisible(false);f.setVisible(true);
             	}});
         
         chef.addActionListener(new ActionListener(){  
-            public void actionPerformed(ActionEvent e){  
+            public void actionPerformed(ActionEvent e){ 
+            	role = "Chef";
             	f.remove(own);f.remove(chef);f.remove(del);
             	msg.setText("Enter your Password");
             	f.add(tf);
             	f.add(enter);
-            	role = "chef";
             	f.setVisible(false);f.setVisible(true);
             	}});
         
@@ -88,7 +89,7 @@
             	msg.setText("Enter your Password");
             	f.add(tf);//f.add(tfid);
             	f.add(enter);
-            	role = "del";
+            	role = "Delivery";
             	f.setVisible(false);f.setVisible(true);
             	}});
        
@@ -97,7 +98,8 @@
             	
             	pass = tf.getText();
             	try {
-					checkPass(pass);
+					sw = checkPass(pass,role);
+					if(sw==0)	{f.dispose();}
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -110,34 +112,43 @@
         
         
         
-        public void checkPass(String user_pass) throws SQLException {
-        	String user_id, role="";
+public int checkPass(String ck_pass, String ck_role) throws SQLException {
+        	String rrole="";
+        	int id = 0;
         	
         	try {
         	Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 			
-			String sql = "SELECT * FROM user2 WHERE Password='"+user_pass+"'";
+			String sql = "SELECT * FROM user2 WHERE Password='"+ck_pass+"' and Role='"+ck_role+"'";
 			
 			Statement st = c.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			
 			int count=0;
 			while(rs.next()) {
-				user_id = rs.getString("id");
-				role = rs.getString("Role");
+				id = rs.getInt("id");
+				rrole = rs.getString("Role");
 				count++;}
 			
-			if(count==1) {
-				new MainMenu(role);}
-			else { new User("3","Chef","hhh");}
+			if(count==1) { //success
+				new MainMenu(rrole,id); 
+				sw = 0;}
+			
+			else if(ck_role.equals("Customer")) { //creates new customer with chosen pass
+				new User(ck_role,ck_pass); 
+				JOptionPane.showMessageDialog(null, "A new account with password \""+ck_pass+"\" created");
+				new MainMenu(ck_role,id);
+				sw = 0;}
+				
+			else if(count==0) {
+				JOptionPane.showMessageDialog(null, "Wrong Password");
+				sw = 1;}
         	}
-        	
-        	catch (ClassNotFoundException e) {
+
+        	catch (ClassNotFoundException e) {e.printStackTrace();}
     			
-    			e.printStackTrace();
-    		}
-        	
+        	return sw;
         }
     
     
