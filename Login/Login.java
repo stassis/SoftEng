@@ -1,5 +1,6 @@
-import java.awt.event.*;  
+	import java.awt.event.*;  
     import javax.swing.*;
+    import java.sql.*;
        
     public class Login extends JFrame {   
     	JFrame f=new JFrame("P.Diner.A. Log In");  
@@ -15,8 +16,9 @@ import java.awt.event.*;
     	JButton chef=new JButton("Chef");
         JButton del=new JButton("Delivery"); 
         JButton enter=new JButton("Enter");
+        //JTextField tfid = new JTextField();
         JTextField tf=new JTextField();
-        String role, pass, s = "1"; //checkPass
+        String role, id, pass;
         
         
         public Login (){
@@ -31,11 +33,12 @@ import java.awt.event.*;
         bcust.setBounds(50,100,100,30); 
         bstaff.setBounds(50,150,100,30); 
         enter.setBounds(50,150,100,30);
-        tf.setBounds(50,100,100,30);
+        //tfid.setBounds(50,80,100,30);
+        tf.setBounds(50,115,100,30);
         f.setLayout(null);
         
         f.add(bcust);f.add(msg);f.add(bstaff);f.add(logo);f.add(wlc);
-        f.setSize(500,500);  f.setVisible(true);  
+        f.setSize(300,500);  f.setVisible(true);  
         
         f.addWindowListener(new WindowAdapter() {public void windowClosing(WindowEvent we) {System.exit(0);}});
         
@@ -83,7 +86,7 @@ import java.awt.event.*;
             public void actionPerformed(ActionEvent e){  
             	f.remove(own);f.remove(chef);f.remove(del);
             	msg.setText("Enter your Password");
-            	f.add(tf);
+            	f.add(tf);//f.add(tfid);
             	f.add(enter);
             	role = "del";
             	f.setVisible(false);f.setVisible(true);
@@ -91,17 +94,50 @@ import java.awt.event.*;
        
         enter.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
-            	//to be replace by checkPass()
+            	
             	pass = tf.getText();
-            	if(pass.equals(s)) {
-            		f.dispose();
-            		new MainMenu();
-            	}
+            	try {
+					checkPass(pass);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            	
+            	
             	}});
         
         }
         
         
+        
+        public void checkPass(String user_pass) throws SQLException {
+        	String user_id, role="";
+        	
+        	try {
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+			
+			String sql = "SELECT * FROM user WHERE Password='"+user_pass+"'";
+			
+			Statement st = c.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			
+			int count=0;
+			while(rs.next()) {
+				user_id = rs.getString("id");
+				role = rs.getString("Role");
+				count++;}
+			
+			if(count==1) {
+				new MainMenu(role);}
+			
+        	}
+        	catch (ClassNotFoundException e) {
+    			
+    			e.printStackTrace();
+    		}
+        	
+        }
     
     
 public static void main(String Args[]) {
