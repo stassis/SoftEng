@@ -117,7 +117,7 @@
         	Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 			
-			String sql = "SELECT * FROM user WHERE Password='"+user_pass+"'";
+			String sql = "SELECT * FROM user2 WHERE Password='"+user_pass+"'";
 			
 			Statement st = c.createStatement();
 			ResultSet rs = st.executeQuery(sql);
@@ -130,8 +130,9 @@
 			
 			if(count==1) {
 				new MainMenu(role);}
-			
+			else { new User("3","Chef","hhh");}
         	}
+        	
         	catch (ClassNotFoundException e) {
     			
     			e.printStackTrace();
