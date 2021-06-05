@@ -141,6 +141,54 @@ ALTER TABLE `plate`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+--
+
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `cust_id` int(11) NOT NULL,
+  `seats` int(11) NOT NULL,
+  `startHH` int(11) NOT NULL,
+  `startmm` int(11) NOT NULL,
+  `endHH` int(11) NOT NULL,
+  `endmm` int(11) NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `Name` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `cust_id`, `seats`, `startHH`, `startmm`, `endHH`, `endmm`, `table_id`, `Name`) VALUES
+(1, 12, 3, 17, 30, 19, 5, 2, 'Kostas'),
+(2, 14, 6, 13, 30, 15, 15, 2, 'Lola');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tables`
+--
+
+CREATE TABLE `tables` (
+  `id` int(11) NOT NULL,
+  `isOccupied` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tables`
+--
+
+INSERT INTO `tables` (`id`, `isOccupied`) VALUES
+(1, 1),
+(2, 0),
+(3, 0),
+(4, 0),
+(5, 0);
+
+-- --------------------------------------------------------
 
 --
 -- AUTO_INCREMENT for table `orders`
