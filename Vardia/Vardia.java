@@ -1,17 +1,19 @@
+//import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
+public class Vardia extends JFrame {
 
-public class Vardia {
-
-	private JFrame frame;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -20,54 +22,45 @@ public class Vardia {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Vardia window = new Vardia();
-					window.frame.setVisible(true);
+					Vardia frame = new Vardia();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-	
-	public void showmain() {
-		frame.show();
-	}
 
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
 	public Vardia() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame("P.Diner.A. Vardia");
-		frame.setBounds(100, 100, 440, 402);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 428, 419);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
 		
-		ImageIcon png = new ImageIcon("src/logo.png");
-        JLabel logo = new JLabel(png);
-        
-        logo.setBounds(116, 236, 202, 111);
-        frame.getContentPane().add(logo);
-		
-		JButton btnVardia = new JButton("Vardia");
-		btnVardia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnNewButton = new JButton("Vardia");//epomeni othoni
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				
 				//frame.hide();
-				frame.dispose();
-				Screen scr = new Screen();
-				scr.setVisible(true);
 				
+				dispose();
+				new Clockscreen().setVisible(true);;
 				
 			}
 		});
-		btnVardia.setBounds(158, 125, 117, 25);
-		frame.getContentPane().add(btnVardia);
+		btnNewButton.setBounds(147, 72, 117, 25);
+		contentPane.add(btnNewButton);
+		
+		ImageIcon png = new ImageIcon("src/logo.png");
+		JLabel logo = new JLabel(png);
+        
+        logo.setBounds(114, 235, 202, 111);
+        contentPane.add(logo);
 	}
+
 }
