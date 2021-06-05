@@ -15,8 +15,11 @@ public class Kratisi {
 	JSpinner spStartmm = new JSpinner();
 	JSpinner spEndHH = new JSpinner();
 	JSpinner spEndmm = new JSpinner();
+	Table t = new Table(1);
+	String Name = "undefined";
 	
-	Kratisi() {
+	
+	Kratisi(int cust_id) {
 		f.getContentPane().setLayout(null);
 		
 		ImageIcon png = new ImageIcon("src/logo.png");
@@ -32,7 +35,7 @@ public class Kratisi {
 		lblEnd.setBounds(30, 118, 46, 14);
 		f.getContentPane().add(lblEnd);
 		
-		JLabel lbl = new JLabel("Enter your reservation info");
+		JLabel lbl = new JLabel("Enter your details");
 		lbl.setBounds(30, 33, 173, 14);
 		f.getContentPane().add(lbl);
 		
@@ -54,32 +57,8 @@ public class Kratisi {
 		textField.setColumns(10);
 		
 		JButton btnCheck = new JButton("Choose Table");
-		btnCheck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int eH = (int)spEndHH.getValue();
-				int em = (int)spEndmm.getValue();
-				int sH = (int)spStartHH.getValue();
-				int sm = (int)spStartmm.getValue();
-				
-				if(eH < sH) { new Warn("Start later than End"); }
-				else if(eH == sH) {
-					if (em < sm) { new Warn("Start later than End"); }
-				}
-				else {
-					int Seats = (int)spSeats.getValue();
-					String Name = textField.getText();
-					
-					//showTables();
-					//selects table
-					//new Booking(Name, Seats, sH, sm, eH, em);
-				}
-				
-		}}); 
-		
 		btnCheck.setBounds(30, 180, 111, 23);
 		f.getContentPane().add(btnCheck);
-		
-				
 		
 		spStartHH.setBounds(95, 84, 46, 20);
 		spStartHH.setModel(new SpinnerNumberModel(0, 0, 23, 1));
@@ -99,20 +78,36 @@ public class Kratisi {
 					
 		f.setSize(500,400);f.setVisible(true);
 		
+		
+		btnCheck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int eH = (int)spEndHH.getValue();
+				int em = (int)spEndmm.getValue();
+				int sH = (int)spStartHH.getValue();
+				int sm = (int)spStartmm.getValue();
+				
+				if(eH < sH) { JOptionPane.showMessageDialog(null, "Start later than End not valid"); }
+				else if(eH == sH) {
+					if (em < sm) { JOptionPane.showMessageDialog(null, "Start later than End not valid"); }
+				}
+				else {
+					int Seats = (int)spSeats.getValue();
+					Name = textField.getText();
+					f.dispose();
+					new showTables(t.getTables(), sH, sm, eH, em, Seats, cust_id, Name);
+				}
+				
+		}}); 
+		
+		
 	}
 	
-	//TEMPORARY, MAINLY FOR TESTING
-	class Warn {
-		Warn (String ss) {
-			JFrame w = new JFrame ("Warning");
-			JLabel wrn = new JLabel(ss);
-			wrn.setBounds(80,80,50,50);w.add(wrn);w.setSize(200,200);w.setVisible(true);
-			w.addWindowListener(new WindowAdapter() {public void windowClosing(WindowEvent we) {w.dispose();}});
-		}
-	}
+	
+	
+	
 	
 	public static void main(String Args[]) {
-		new Kratisi();
+		new Kratisi(12);
 	}
 	
 	}
