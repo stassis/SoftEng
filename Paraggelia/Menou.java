@@ -24,6 +24,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Component;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import java.awt.Font;
 
 public class Menou extends JFrame {
 
@@ -64,10 +66,6 @@ public class Menou extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Epilekste piata:");
-		lblNewLabel.setBounds(127, 11, 108, 14);
-		contentPane.add(lblNewLabel);
-		
 		JButton btnOrder = new JButton("Place Order");
 		btnOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -87,23 +85,27 @@ public class Menou extends JFrame {
 		lbl_logo.setIcon(new ImageIcon(img));
 		lbl_logo.setBounds(78, 284, 213, 128);
 		contentPane.add(lbl_logo);
+		spinner1.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		
 		
 		
 		
-		spinner1.setBounds(248, 47, 30, 20);
+		spinner1.setBounds(265, 58, 30, 20);
 		contentPane.add(spinner1);
+		spinner2.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		
 		
-		spinner2.setBounds(248, 83, 30, 20);
+		spinner2.setBounds(265, 94, 30, 20);
 		contentPane.add(spinner2);
+		spinner3.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		
 		
-		spinner3.setBounds(248, 125, 30, 20);
+		spinner3.setBounds(265, 136, 30, 20);
 		contentPane.add(spinner3);
+		spinner4.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		
 		
-		spinner4.setBounds(248, 168, 30, 20);
+		spinner4.setBounds(265, 179, 30, 20);
 		contentPane.add(spinner4);
 		
 try {
@@ -159,36 +161,48 @@ try {
 		}
 
 JLabel lblPlate1 = new JLabel(a[0]);
-lblPlate1.setBounds(38, 50, 86, 14);
+lblPlate1.setBounds(55, 61, 86, 14);
 contentPane.add(lblPlate1);
 
 JLabel lblPlate2 = new JLabel(a[1]);
-lblPlate2.setBounds(38, 86, 86, 14);
+lblPlate2.setBounds(55, 97, 86, 14);
 contentPane.add(lblPlate2);
 
 JLabel lblPrice1 = new JLabel(Integer.toString(b[0]));
-lblPrice1.setBounds(157, 50, 46, 14);
+lblPrice1.setBounds(174, 61, 46, 14);
 contentPane.add(lblPrice1);
 
 JLabel lblPrice2 = new JLabel(Integer.toString(b[1]));
-lblPrice2.setBounds(157, 86, 46, 14);
+lblPrice2.setBounds(174, 97, 46, 14);
 contentPane.add(lblPrice2);
 
 JLabel lblPlate3 = new JLabel(a[2]);
-lblPlate3.setBounds(38, 128, 86, 14);
+lblPlate3.setBounds(55, 139, 86, 14);
 contentPane.add(lblPlate3);
 
 JLabel lblPlate4 = new JLabel(a[3]);
-lblPlate4.setBounds(38, 171, 70, 14);
+lblPlate4.setBounds(55, 182, 70, 14);
 contentPane.add(lblPlate4);
 
 JLabel lblPrice3 = new JLabel(Integer.toString(b[2]));
-lblPrice3.setBounds(157, 128, 46, 14);
+lblPrice3.setBounds(174, 139, 46, 14);
 contentPane.add(lblPrice3);
 
 JLabel lbl4 = new JLabel(Integer.toString(b[3]));
-lbl4.setBounds(157, 171, 46, 14);
+lbl4.setBounds(174, 182, 46, 14);
 contentPane.add(lbl4);
+JLabel lblPiata = new JLabel("Plates:");
+lblPiata.setFont(new Font("Tahoma", Font.BOLD, 14));
+lblPiata.setBounds(38, 36, 46, 14);
+contentPane.add(lblPiata);
+JLabel lblPrice = new JLabel("Price:");
+lblPrice.setFont(new Font("Tahoma", Font.BOLD, 14));
+lblPrice.setBounds(154, 36, 46, 14);
+contentPane.add(lblPrice);
+JLabel lblNewLabel_1 = new JLabel("Quantity:");
+lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+lblNewLabel_1.setBounds(242, 36, 75, 14);
+contentPane.add(lblNewLabel_1);
 
 
 	}
