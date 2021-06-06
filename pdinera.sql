@@ -187,6 +187,26 @@ INSERT INTO `user2` (`id`, `Role`, `Password`) VALUES
 -- Indexes for dumped tables
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lastlog`
+--
+
+CREATE TABLE `lastlog` (
+  `id` int(11) NOT NULL,
+  `Role` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lastlog`
+--
+
+INSERT INTO `lastlog` (`id`, `Role`) VALUES
+(15, 'Delivery');
+
+------------------------------------------------
+
 --
 -- Indexes for table `orders`
 --
