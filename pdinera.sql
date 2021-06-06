@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2021 at 10:46 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jun 06, 2021 at 08:37 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -81,6 +81,24 @@ INSERT INTO `food` (`Fagito`, `Posotita`, `Imerominia`, `Oriaellipsis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lastlog`
+--
+
+CREATE TABLE `lastlog` (
+  `id` int(11) NOT NULL,
+  `Role` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lastlog`
+--
+
+INSERT INTO `lastlog` (`id`, `Role`) VALUES
+(17, 'Customer');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -91,8 +109,12 @@ CREATE TABLE `orders` (
   `quantity2` int(10) NOT NULL,
   `quantity3` int(10) NOT NULL,
   `quantity4` int(10) NOT NULL,
-  `flag` tinytext NOT NULL
+  `flag` tinytext NOT NULL,
+  `delivery` text NOT NULL,
+  `orderstable` int(10) DEFAULT NULL,
+  `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- --------------------------------------------------------
 
@@ -181,49 +203,18 @@ INSERT INTO `user2` (`id`, `Role`, `Password`) VALUES
 (13, 'Chef', 'vvv'),
 (14, 'Customer', 'panos'),
 (15, 'Delivery', 'velos'),
-(16, 'Delivery', 'nomos.ilias');
+(16, 'Delivery', 'nomos.ilias'),
+(17, 'Customer', 'andreas');
 
 --
 -- Indexes for dumped tables
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lastlog`
---
-
-CREATE TABLE `lastlog` (
-  `id` int(11) NOT NULL,
-  `Role` tinytext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `lastlog`
---
-
-INSERT INTO `lastlog` (`id`, `Role`) VALUES
-(15, 'Delivery');
-
-------------------------------------------------
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`);
-
---
--- Indexes for table `plate`
---
-ALTER TABLE `plate`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `schedule`
---
-ALTER TABLE `schedule`
-  ADD PRIMARY KEY (`User`(15));
 
 --
 -- Indexes for table `user2`
@@ -239,19 +230,13 @@ ALTER TABLE `user2`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `plate`
---
-ALTER TABLE `plate`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user2`
 --
 ALTER TABLE `user2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
