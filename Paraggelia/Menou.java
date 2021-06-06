@@ -37,7 +37,7 @@ public class Menou extends JFrame {
 	JSpinner spinner4 = new JSpinner();
 	String a[]={"0","0","0","0"};
     int b[]= {0,0,0,0};
-    
+    int nd=0; String nr="";
 	/**
 	 * Launch the application.
 	 */
@@ -71,13 +71,13 @@ public class Menou extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				dispose();
-				new Order(12,(int)spinner1.getValue(),(int)spinner2.getValue(),(int)spinner3.getValue(),(int)spinner4.getValue());
+				new Order(nd,(int)spinner1.getValue(),(int)spinner2.getValue(),(int)spinner3.getValue(),(int)spinner4.getValue());
 				TroposPlhrwmhs scr = new TroposPlhrwmhs();
 				scr.setVisible(true);
 				
 			}
 		});
-		btnOrder.setBounds(116, 236, 108, 23);
+		btnOrder.setBounds(119, 237, 108, 23);
 		contentPane.add(btnOrder);
 		
 		JLabel lbl_logo = new JLabel("");
@@ -124,7 +124,7 @@ try {
 			//String[] columnNames = {"Fagito", "Posotita", "Imerominia"};
 			
 			
-			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"ID", "Name", "Price", "Quantity"}, 0){
+			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"ID", "Name", "Price"}, 0){
 
 			    //@Override
 			    //public boolean isCellEditable(int row, int column) {
@@ -139,10 +139,10 @@ try {
 				int id = rs.getInt("ID");
 	            String plate_name = rs.getString("Name");
 	            int price = rs.getInt("Price");
-	            int quantity = 0;
 	            
 	            
-	            String[] data = { Integer.toString(id), plate_name , Integer.toString(price) , Integer.toString(quantity)};
+	            
+	            String[] data = { Integer.toString(id), plate_name , Integer.toString(price) };
 	            tableModel.addRow(data);
 	            a[k] = plate_name; 
 	            b[k] = price;
@@ -159,6 +159,28 @@ try {
 			
 			e.printStackTrace();
 		}
+
+
+
+try{
+  Class.forName("com.mysql.cj.jdbc.Driver");
+  Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+  Statement stmt = c.createStatement();
+  String sql = "SELECT `role`,`id` FROM lastlog";	               		      
+  ResultSet rs = stmt.executeQuery(sql);
+  
+  while (rs.next()) {nd = rs.getInt("id");
+  nr = rs.getString("role");}
+                      		      
+  c.close();	               		   
+}
+catch (Exception ee)
+{
+  System.err.println("Got an exception!");
+  System.err.println(ee.getMessage());
+}
+
+
 
 JLabel lblPlate1 = new JLabel(a[0]);
 lblPlate1.setBounds(55, 61, 86, 14);
@@ -191,14 +213,17 @@ contentPane.add(lblPrice3);
 JLabel lbl4 = new JLabel(Integer.toString(b[3]));
 lbl4.setBounds(174, 182, 46, 14);
 contentPane.add(lbl4);
+
 JLabel lblPiata = new JLabel("Plates:");
 lblPiata.setFont(new Font("Tahoma", Font.BOLD, 14));
 lblPiata.setBounds(38, 36, 46, 14);
 contentPane.add(lblPiata);
+
 JLabel lblPrice = new JLabel("Price:");
 lblPrice.setFont(new Font("Tahoma", Font.BOLD, 14));
 lblPrice.setBounds(154, 36, 46, 14);
 contentPane.add(lblPrice);
+
 JLabel lblNewLabel_1 = new JLabel("Quantity:");
 lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 lblNewLabel_1.setBounds(242, 36, 75, 14);
