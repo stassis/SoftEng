@@ -59,27 +59,27 @@ public class showTables {
 
 		t1.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				new Booking(sH, sm, eH, em, 1, Seats, cust_id, Name);
-				JOptionPane.showMessageDialog(null, "Table 1 booked for "+Name+" on "+start+":"+end+".");
+				JOptionPane.showMessageDialog(null, "Table 1 booked for "+Name+" on "+start+"");
 				stf.dispose(); new MainMenu();
 				}}); 
 		t2.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				new Booking(sH, sm, eH, em, 2, Seats, cust_id, Name);
-				JOptionPane.showMessageDialog(null, "Table 2 booked for "+Name+" on "+sH+":"+sm+".");
+				JOptionPane.showMessageDialog(null, "Table 2 booked for "+Name+" on "+start+"");
 				stf.dispose(); new MainMenu();
 				}});  
 		t3.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				new Booking(sH, sm, eH, em, 3, Seats, cust_id, Name);
-				JOptionPane.showMessageDialog(null, "Table 3 booked for "+Name+" on "+sH+":"+sm+".");
+				JOptionPane.showMessageDialog(null, "Table 3 booked for "+Name+" on "+start+"");
 				stf.dispose(); new MainMenu();
 				}}); 
 		t4.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				new Booking(sH, sm, eH, em, 4, Seats, cust_id, Name);
-				JOptionPane.showMessageDialog(null, "Table 4 booked for "+Name+" on "+sH+":"+sm+".");
+				JOptionPane.showMessageDialog(null, "Table 4 booked for "+Name+" on "+start+"");
 				stf.dispose(); new MainMenu();
 				}});  
 		t5.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				new Booking(sH, sm, eH, em, 5, Seats, cust_id, Name);
-				JOptionPane.showMessageDialog(null, "Table 5 booked for "+Name+" on "+sH+":"+sm+".");
+				JOptionPane.showMessageDialog(null, "Table 5 booked for "+Name+" on "+start+"");
 				stf.dispose(); new MainMenu();
 				}});  
 		
@@ -90,8 +90,17 @@ public class showTables {
 		if(flag[5] != 0) {stf.getContentPane().add(t5);}
 			
 		stf.getContentPane().add(lbdiner);
+		
+		JButton btnback = new JButton("back");
+		btnback.setBounds(295, 438, 89, 23);
+		stf.getContentPane().add(btnback);
+		
+		btnback.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
+			stf.dispose(); new Kratisi(cust_id);
+			}}); 
+		
+		
 		stf.setSize(400,500); 
 		stf.setVisible(true);
 	}
-
 }
