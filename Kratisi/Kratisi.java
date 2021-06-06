@@ -94,7 +94,7 @@ public class Kratisi {
 					int Seats = (int)spSeats.getValue();
 					Name = textField.getText();
 					f.dispose();
-					new showTables(t.getTables(), sH, sm, eH, em, Seats, cust_id, Name);
+				    new showTables(sH, sm, eH, em, Seats, cust_id, Name);
 				}
 				
 		}}); 
