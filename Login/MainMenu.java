@@ -58,6 +58,13 @@ public class MainMenu {
 		JButton btnNewOrder = new JButton("Place an Order");
 		btnNewOrder.setBounds(35, 60, 213, 50);
 		f.getContentPane().add(btnNewOrder);
+		btnNewOrder.addActionListener(new ActionListener(){  
+            public void actionPerformed(ActionEvent e){  
+            	f.dispose();
+            	TroposParadoshs scr=new TroposParadoshs();
+            	scr.setVisible(true);
+            	}});
+		
 		
 		JButton btnReview = new JButton("Leave a Review");
 		btnReview.setBounds(35, 200, 213, 50);
