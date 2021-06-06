@@ -1,18 +1,35 @@
-	import java.awt.event.*;  
-    import javax.swing.*;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
+import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.*;
 import java.awt.Color;
-import java.awt.SystemColor;
 import java.awt.Font;
     
     
 public class MainMenu {
 	
-	
-	
 	MainMenu(String role,int id) {
+		try{
+		      Class.forName("com.mysql.cj.jdbc.Driver");
+		      Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+		      
+		      String sql = "UPDATE `lastlog` SET `id`=?,`Role`=? WHERE 1";	               		      
+			     
+		      PreparedStatement pr = c.prepareStatement(sql);
+		      
+		      pr.setString (2, role);pr.setInt (1, id);
+		      pr.execute();c.close();	               		   
+		    }
+		    catch (Exception ee)
+		    {
+		      System.err.println("Got an exception!");
+		      System.err.println(ee.getMessage());
+		    }
+		
         
 		JFrame f = new JFrame("Welcome to P.Diner.A.");
 		f.getContentPane().setLayout(null);
@@ -57,7 +74,7 @@ public class MainMenu {
 		btnReservation.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
             	f.dispose();
-            	new Kratisi();
+            	new Kratisi(id);
             	}});
             	
         
@@ -145,4 +162,29 @@ public class MainMenu {
 		f.setSize(300,500);
 		f.setVisible(true);
 	}
+	
+	
+	MainMenu() {
+		int nd=0; String nr="";
+		try{
+	      Class.forName("com.mysql.cj.jdbc.Driver");
+	      Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+	      Statement stmt = c.createStatement();
+	      String sql = "SELECT `role`,`id` FROM lastlog";	               		      
+	      ResultSet rs = stmt.executeQuery(sql);
+	      
+	      while (rs.next()) {nd = rs.getInt("id");
+	      nr = rs.getString("role");}
+	      
+	      new MainMenu(nr, nd);	                    		      
+	      c.close();	               		   
+	    }
+	    catch (Exception ee)
+	    {
+	      System.err.println("Got an exception!");
+	      System.err.println(ee.getMessage());
+	    }
+	}
 }
+
+
