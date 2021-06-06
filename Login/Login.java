@@ -138,7 +138,7 @@ public int checkPass(String ck_pass, String ck_role) throws SQLException {
 			else if(ck_role.equals("Customer")) { //creates new customer with chosen pass
 				new User(ck_role,ck_pass); 
 				JOptionPane.showMessageDialog(null, "A new account with password \""+ck_pass+"\" created");
-				new MainMenu(ck_role,id);
+				checkPass(ck_pass,ck_role);
 				sw = 0;}
 				
 			else if(count==0) {
