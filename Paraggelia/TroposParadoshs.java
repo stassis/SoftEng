@@ -19,21 +19,9 @@ public class TroposParadoshs extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private boolean takeaway;
 	private boolean delivery;
+	public static String del;
 
-	/*** Launch the application.*/
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TroposParadoshs frame = new TroposParadoshs();
-					frame.setVisible(true);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/*** Create the frame.*/
 	public TroposParadoshs() {
@@ -69,6 +57,7 @@ public class TroposParadoshs extends JFrame {
 				
 				delivery = true;
 				
+				
 			}
 		});
 		buttonGroup.add(rdbtn_delivery);
@@ -98,22 +87,23 @@ public class TroposParadoshs extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(delivery) {
-					
+					del = "Delivery";
 					dispose();
 					Delivery_SumplhrwshStoixeiwn scr = new Delivery_SumplhrwshStoixeiwn();
 					scr.setVisible(true);
 					
-				}else if(takeaway) {
-					
+				}else if (takeaway){
+					del = "TakeAway";
 					dispose();
 					Menou scr = new Menou();
 					scr.setVisible(true);
 					
-				}else  {
 					
-				  	dispose();
-					DiathesimaTrapezia scr = new DiathesimaTrapezia();
-					scr.setVisible(true);
+				}else {
+					del = "Entos tou xwrou";
+					dispose();
+					showTables scr = new showTables(0);
+					//scr.setVisible(true);
 					
 				}
 				
@@ -121,5 +111,6 @@ public class TroposParadoshs extends JFrame {
 		});
 		btn_OK.setBounds(142, 189, 89, 23);
 		contentPane.add(btn_OK);
+		
 	}
 }

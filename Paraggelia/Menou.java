@@ -38,26 +38,21 @@ public class Menou extends JFrame {
 	String a[]={"0","0","0","0"};
     int b[]= {0,0,0,0};
     int nd=0; String nr="";
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Menou frame = new Menou();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+    String d;
+    String address;
+    int orderstable;
+	
+    
 	/**
 	 * Create the frame.
 	 */
+    
 	public Menou() {
+		
+		d = TroposParadoshs.del;
+		orderstable = showTables.table; 
+		address = Delivery_SumplhrwshStoixeiwn.address;
+		
 		setTitle("P.Diner.A Menou");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 450);
@@ -71,8 +66,8 @@ public class Menou extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				dispose();
-				new Order(nd,(int)spinner1.getValue(),(int)spinner2.getValue(),(int)spinner3.getValue(),(int)spinner4.getValue());
-				TroposPlhrwmhs scr = new TroposPlhrwmhs();
+				Order o = new Order(nd,(int)spinner1.getValue(),(int)spinner2.getValue(),(int)spinner3.getValue(),(int)spinner4.getValue(), d , orderstable ,address);
+				TroposPlhrwmhs scr = new TroposPlhrwmhs(o);
 				scr.setVisible(true);
 				
 			}
@@ -109,28 +104,14 @@ public class Menou extends JFrame {
 		contentPane.add(spinner4);
 		
 try {
-        	
-        	
-			Class.forName("com.mysql.cj.jdbc.Driver");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM plate";
 			ResultSet rs = stmt.executeQuery(sql);
-			//PreparedStatement pst = connection.prepareStatement(sql);
-			//pst.setString(1, textFieldSearch.getText());
-			//ResultSet rs = pst.executeQuery();
-			//System.out.println("Fagito     Posotita     Imerominia");
-			
-			//String[] columnNames = {"Fagito", "Posotita", "Imerominia"};
-			
 			
 			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"ID", "Name", "Price"}, 0){
 
-			    //@Override
-			    //public boolean isCellEditable(int row, int column) {
-			       //ola ta kelia mh epexergasima
-			       //return false;
-			    //}
 			};
 			
 			int k=0;
@@ -160,27 +141,27 @@ try {
 			e.printStackTrace();
 		}
 
-
-
 try{
-  Class.forName("com.mysql.cj.jdbc.Driver");
-  Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
-  Statement stmt = c.createStatement();
-  String sql = "SELECT `role`,`id` FROM lastlog";	               		      
-  ResultSet rs = stmt.executeQuery(sql);
-  
-  while (rs.next()) {nd = rs.getInt("id");
-  nr = rs.getString("role");}
-                      		      
-  c.close();	               		   
-}
-catch (Exception ee)
-{
-  System.err.println("Got an exception!");
-  System.err.println(ee.getMessage());
-}
+	  Class.forName("com.mysql.cj.jdbc.Driver");
+	  Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+	  Statement stmt = c.createStatement();
+	  String sql = "SELECT `role`,`id` FROM lastlog";	               		      
+	  ResultSet rs = stmt.executeQuery(sql);
+	  
+	  while (rs.next()) {nd = rs.getInt("id");
+	  nr = rs.getString("role");}
+	                      		      
+	  c.close();	               		   
+	}
+	catch (Exception ee)
+	{
+	  System.err.println("Got an exception!");
+	  System.err.println(ee.getMessage());
+	}
 
 
+
+	
 
 JLabel lblPlate1 = new JLabel(a[0]);
 lblPlate1.setBounds(55, 61, 86, 14);

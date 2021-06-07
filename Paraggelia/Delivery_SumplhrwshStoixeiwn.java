@@ -6,36 +6,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Delivery_SumplhrwshStoixeiwn frame = new Delivery_SumplhrwshStoixeiwn();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JTextField Name;
+	private JTextField Address;
+	private JTextField Floor;
+	private JTextField Door;
+	public static String address;
+	
 
 	/**
 	 * Create the frame.
@@ -59,62 +49,55 @@ public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 		lblNewLabel_1.setBounds(74, 11, 300, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Onomatepwnumo:");
-		lblNewLabel_2.setBounds(21, 46, 112, 14);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblonoma = new JLabel("Onomatepwnumo:");
+		lblonoma.setBounds(21, 46, 112, 14);
+		contentPane.add(lblonoma);
 		
-		textField = new JTextField();
-		textField.setBounds(143, 43, 182, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		Name = new JTextField();
+		Name.setBounds(143, 43, 182, 20);
+		contentPane.add(Name);
+		Name.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Odos kai arithmos:");
-		lblNewLabel_3.setBounds(21, 94, 123, 14);
-		contentPane.add(lblNewLabel_3);
+		JLabel lbldieuthinsi = new JLabel("Odos kai arithmos:");
+		lbldieuthinsi.setBounds(21, 94, 123, 14);
+		contentPane.add(lbldieuthinsi);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(143, 91, 182, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		Address = new JTextField();
+		Address.setBounds(143, 91, 182, 20);
+		contentPane.add(Address);
+		Address.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Orofos:");
-		lblNewLabel_4.setBounds(21, 137, 56, 14);
-		contentPane.add(lblNewLabel_4);
+		JLabel lblorofos = new JLabel("Orofos:");
+		lblorofos.setBounds(21, 137, 56, 14);
+		contentPane.add(lblorofos);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(74, 134, 56, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		Floor = new JTextField();
+		Floor.setBounds(74, 134, 56, 20);
+		contentPane.add(Floor);
+		Floor.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Thlefwno:");
-		lblNewLabel_5.setBounds(20, 178, 70, 14);
-		contentPane.add(lblNewLabel_5);
+		JLabel lblkoudouni = new JLabel("Koudouni:");
+		lblkoudouni.setBounds(143, 137, 70, 14);
+		contentPane.add(lblkoudouni);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(84, 175, 86, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		Door = new JTextField();
+		Door.setBounds(202, 134, 123, 20);
+		contentPane.add(Door);
+		Door.setColumns(10);
 		
-		JLabel lblNewLabel_6 = new JLabel("Koudouni:");
-		lblNewLabel_6.setBounds(143, 137, 70, 14);
-		contentPane.add(lblNewLabel_6);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(202, 134, 123, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
-		
-		JButton btnNewButton = new JButton("OK");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnOK = new JButton("OK");
+		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			address = Address.getText();
 				
 				dispose();
 				Menou scr = new Menou();
 				scr.setVisible(true);
-				
 			}
 		});
-		btnNewButton.setBounds(131, 225, 89, 23);
-		contentPane.add(btnNewButton);
+		btnOK.setBounds(134, 215, 89, 23);
+		contentPane.add(btnOK);
 	}
 }

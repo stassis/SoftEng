@@ -10,13 +10,19 @@ public class Order {
 	int q2;
 	int q3;
 	int q4;
+	String delivery;
+	String address;
+	int table;
 	
-	public Order( int cust_id, int q1, int q2, int q3, int q4 ) {
+	public Order(int cust_id, int q1, int q2, int q3, int q4, String d,  int table, String address) {
 	   this.cust_id = cust_id;
 	   this.q1 = q1;
 	   this.q2 = q2;
 	   this.q3 = q3;
 	   this.q4 = q4;
+	   this.delivery=d;
+	   this.address = address;
+	   this.table = table;
 	   
 	   try
 	    {
@@ -24,7 +30,7 @@ public class Order {
 		 Class.forName("com.mysql.cj.jdbc.Driver");
 	      Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 	   
-	      String sql = " INSERT INTO `orders` (`customer_id`, `quantity1`, `quantity2`, `quantity3`, `quantity4`, `flag`) VALUES (?, ?, ?, ?, ?, 'submitted');";	               		      
+	      String sql = " INSERT INTO `orders` (`customer_id`, `quantity1`, `quantity2`, `quantity3`, `quantity4`, `flag`,`delivery`,`orderstable`, `address`) VALUES (?, ?, ?, ?, ?, 'submitted', ?, ?, ?);";	               		      
 	     
 	      PreparedStatement pr = c.prepareStatement(sql);
 	      
@@ -33,8 +39,12 @@ public class Order {
 	      pr.setInt (3, q2);
 	      pr.setInt (4, q3);
 	      pr.setInt (5, q4);
+	      pr.setString (6, delivery);
+	      pr.setInt(7, table);
+	      pr.setString( 8, address);
 	      
-	      pr.execute();	               		      
+	      
+	      pr.execute();
 	      c.close();	               		   
 	    }
 	    catch (Exception ee)
@@ -47,10 +57,9 @@ public class Order {
 	 }
 	 
 	 
-
-	
-	//public void getPlates() {
-	     
+	//public int[] getQuantity() {
+		//int[] Quant= {q1,q2,q3,q4};
+		//return Quant; 
 	//}
 	
 	//public void getTable() {
