@@ -69,12 +69,12 @@ public class PliroforiesApothikis {
 		logo.setBounds(116, 236, 202, 111);
         frame.getContentPane().add(logo);
         
-        JLabel title = new JLabel("Apothiki");
+        JLabel title = new JLabel("Storage");
 		title.setFont(new Font("Tahoma", Font.BOLD, 16));
-		title.setBounds(166, 10, 77, 15);
+		title.setBounds(166, 10, 85, 25);
 		frame.getContentPane().add(title);
 		
-		JButton btnNewButton = new JButton("Prosthiki Promithion");
+		JButton btnNewButton = new JButton("ADD INGREDIENTS");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -100,7 +100,7 @@ public class PliroforiesApothikis {
 		btnBack.setBounds(12, 12, 67, 15);
 		frame.getContentPane().add(btnBack);
 		
-		try {
+		try {//emfanise ton pinaka tis apothikis
         	
         	
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -108,15 +108,9 @@ public class PliroforiesApothikis {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM food";
 			ResultSet rs = stmt.executeQuery(sql);
-			//PreparedStatement pst = connection.prepareStatement(sql);
-			//pst.setString(1, textFieldSearch.getText());
-			//ResultSet rs = pst.executeQuery();
-			//System.out.println("Fagito     Posotita     Imerominia");
-			
-			//String[] columnNames = {"Fagito", "Posotita", "Imerominia"};
-			
-			
-			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Fagito", "Posotita", "Imerominia","Oriaellipsis"}, 0){
+
+			//dimiourgia montelou pinaka me tis katallhles sthles
+			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Ingredient", "Quantity", "Exp.Date","Sh.Limits"}, 0){
 
 			    @Override
 			    public boolean isCellEditable(int row, int column) {
@@ -128,28 +122,27 @@ public class PliroforiesApothikis {
 			
 			while (rs.next()) {
 	            
+				//apothikeusi ths kathe grammis stis katallhles metavlites kai kataxwrisi tous se String array
 	            String fagito = rs.getString("Fagito");
 	            int posotita = rs.getInt("Posotita");
 	            String date = rs.getDate("Imerominia").toString();
 	            int oriaell = rs.getInt("Oriaellipsis");
-	            
-	            //System.out.println(fagito+"    "+posotita+"            "+date);
-	            
+
 	            String[] data = { fagito, Integer.toString(posotita), date, Integer.toString(oriaell)};
 	            tableModel.addRow(data);
-	            //model.addRow(new Object[]{fagito,posotita,date});
+	            
+	         // if(posotita<oriaell){ notifyHost() }
 	            
 	         }
 
-			//JTable jt = new JTable(new DefaultTableModel(columnNames, 0));
-			//JTable jt = new JTable(tableModel);
+			//***dimiourgia pinaka***
 			JTable jt = new JTable(tableModel);
 			
 			JScrollPane js=new JScrollPane(jt);
-			//js.setVisible(true);
-			
+
 			js.setBounds(64, 52, 287, 104);
 			frame.getContentPane().add(js);
+			//*** - ***
 			
 			c.close();
 			stmt.close();

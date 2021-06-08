@@ -31,23 +31,6 @@ public class PlaisiaEisagogisTimon {
 	private JTextField onomaYlikoy;
 	private JTextField quantity;
 	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PlaisiaEisagogisTimon window = new PlaisiaEisagogisTimon();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
 	public void showplaisiatimwn() {
 		frame.show();
 	}
@@ -90,22 +73,17 @@ public class PlaisiaEisagogisTimon {
         
         
         
-        JLabel lblOnomaYlikoy = new JLabel("Onoma Ylikoy:");
+        JLabel lblOnomaYlikoy = new JLabel("Ingredient Name:");
         lblOnomaYlikoy.setFont(new Font("Dialog", Font.PLAIN, 10));
         lblOnomaYlikoy.setBounds(50, 85, 82, 15);
         frame.getContentPane().add(lblOnomaYlikoy);
         
-        JLabel lblPosothta = new JLabel("Posothta:");
+        JLabel lblPosothta = new JLabel("Quantity:");
         lblPosothta.setFont(new Font("Dialog", Font.PLAIN, 10));
         lblPosothta.setBounds(250, 84, 70, 15);
-        frame.getContentPane().add(lblPosothta);
+        frame.getContentPane().add(lblPosothta);        
         
-        //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
-        //LocalDateTime now = LocalDateTime.now();  
-        //System.out.println(dtf.format(now)); 
-        
-        
-        JButton btnProsthiki = new JButton("Prosthiki");
+        JButton btnProsthiki = new JButton("ADD");
         btnProsthiki.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
@@ -113,19 +91,19 @@ public class PlaisiaEisagogisTimon {
         		
         		String textFieldYliko = onomaYlikoy.getText();
         		
+        		//elegxos an kai ta 2 text fileds den exoun times
         		if(!(textFieldPosotita.length() == 0 || textFieldYliko.length() == 0)) {
         			
-        			try {
-        				
+        			try {//elegxos an o arithmos posotitas einai integer i allos typos (catch statement)
+        			
+        			//metatropi tou textfiled posotita string se integer
         			int intFieldPosotita=Integer.parseInt(textFieldPosotita);
         			
-        				if(intFieldPosotita >= 0) {
+        				if(intFieldPosotita >= 0) {//i posotita prepei na einai thetikos arithmos
         			
 		        			try {
-		            			
-		        				//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		        				//Date date = new Date();
 		        				
+		        				//syndesi me ti vasi + ektelesi sql query
 		        				Class.forName("com.mysql.cj.jdbc.Driver");
 		    					Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 		    	        		//Statement stmt = c.createStatement();
@@ -137,6 +115,7 @@ public class PlaisiaEisagogisTimon {
 		    	        		
 		    	        		stmt.execute();
 		    	        		
+		    	        		//apeleytherosi porwn
 		    	        		stmt.close();
 		    	        		c.close();
 		    	        		
@@ -151,17 +130,17 @@ public class PlaisiaEisagogisTimon {
 		        			
         				}else {
             				
-            				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
+            				JOptionPane.showMessageDialog(null, "Enter positive values(integer)!");
             				
             			}
         			}catch(NumberFormatException e1) {
-        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!"); 
+        				JOptionPane.showMessageDialog(null, "Enter positive values(integer)!"); 
      				   // Here catch NumberFormatException
      				   // So input is not a int.
      				 } 	
         		}else {
         			
-        			JOptionPane.showMessageDialog(null, "Symplhrwste stoixeia!");
+        			JOptionPane.showMessageDialog(null, "Please fill in the textfields!");
         			
         		}
         		

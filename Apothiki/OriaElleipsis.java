@@ -28,22 +28,6 @@ public class OriaElleipsis {
 	private JTextField name;
 	private JTextField orio;
 	private boolean pass;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OriaElleipsis window = new OriaElleipsis();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	public void showporiaelleipsis() {
 		frame.show();
@@ -83,31 +67,33 @@ public class OriaElleipsis {
         frame.getContentPane().add(orio);
         orio.setColumns(10);
         
-        JLabel lblEisagetename = new JLabel("Eisagete onoma Ylikoy:");
+        JLabel lblEisagetename = new JLabel("Ingredient Name:");
         lblEisagetename.setFont(new Font("Dialog", Font.PLAIN, 10));
         lblEisagetename.setBounds(40, 91, 114, 15);
         frame.getContentPane().add(lblEisagetename);
         
-        JLabel lblNeoOrio = new JLabel("Neo Orio:");
+        JLabel lblNeoOrio = new JLabel("New Threshold:");
         lblNeoOrio.setFont(new Font("Dialog", Font.PLAIN, 10));
         lblNeoOrio.setBounds(248, 90, 70, 15);
         frame.getContentPane().add(lblNeoOrio);
         
-        JButton btnYpovolh = new JButton("Ypovolh");
+        JButton btnYpovolh = new JButton("Submit");
         btnYpovolh.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
+        		//elegxos an kai ta 2 text fileds den exoun times
         		if(!(name.getText().length() == 0 || orio.getText().length() == 0)) {
-        			
-        			try {
+       			
+        			try {//elegxos an o arithmos posotitas einai integer i allos typos (catch statement)
         				
+        				//metatropi tou oriou string se integer
         				int orioInt=Integer.parseInt(orio.getText());
         			
         				if(orioInt >= 0) {
         					
         					pass = true;
         					
-        					try {	
+        					try {//*****Elegxos an yparxei to yliko sth vash. An den yparxei pass=false***** 	
 			        			
 			        			Class.forName("com.mysql.cj.jdbc.Driver");
 			        			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
@@ -119,15 +105,17 @@ public class OriaElleipsis {
 				        		
 				        		ResultSet rs = stmt.executeQuery();
 				        		
-				        		if(!rs.next()) {
+				        		if(!rs.next()) {//an den yparxei grammh pou epestrepse to ResulSet
 				        			
-				        			JOptionPane.showMessageDialog(null, "To yliko poy eisagate den yparxei!");
+				        			JOptionPane.showMessageDialog(null, "The ingredient you entered does not exist!");
 				        			pass = false;
 				        			
+				        			//ekkatharisi textfields
 				        			orio.setText("");
 					        		name.setText("");
 				        		}
 				        		
+				        		//apeleytherosi porwn
 				        		rs.close();
 				        		stmt.close();
 				        		c.close();
@@ -135,10 +123,10 @@ public class OriaElleipsis {
 			        		}catch (ClassNotFoundException | SQLException e1) {
 			        			
 			        			e1.printStackTrace();
-			        		}
+			        		}//*****Elegxos an yparxei to yliko sth vash. An den yparxei pass=false*****
         					
-        					if(pass) {
-				        		try {	
+        					if(pass) {//an yparxei to yliko sth vash
+				        		try {//enhmerwse ta oria	
 				        			
 				        			Class.forName("com.mysql.cj.jdbc.Driver");
 				        			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
@@ -150,10 +138,11 @@ public class OriaElleipsis {
 					        		
 					        		stmt.execute();
 					        		
+					        		//apeleutherosi porwn
 					        		stmt.close();
 					        		c.close();
 					        		
-					        		JOptionPane.showMessageDialog(null, "Oria Ylikoy " + name.getText() +" allaxan se " + orioInt + "!");
+					        		JOptionPane.showMessageDialog(null, "Ingredient " + name.getText() +"\'s threshold changed to " + orioInt + "!");
 					        		orio.setText("");
 					        		name.setText("");
 				        			
@@ -165,19 +154,19 @@ public class OriaElleipsis {
         					
 	        				}else {
 	        				
-	        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
+	        				JOptionPane.showMessageDialog(null, "Enter positive values(integer)!");
 	        				
 	        				}
         				
         			}catch(NumberFormatException e1) {
-        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!"); 
+        				JOptionPane.showMessageDialog(null, "Enter positive values(integer)!"); 
      				   // Here catch NumberFormatException
      				   // So input is not a int.
      				 } 		
         			
         		}else {
         			
-        			JOptionPane.showMessageDialog(null, "Symplhrwste stoixeia!");
+        			JOptionPane.showMessageDialog(null, "Please fill in the textfields!");
         			
         		}
         		

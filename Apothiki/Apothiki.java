@@ -58,7 +58,7 @@ public class Apothiki {
         Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
         frame.setIconImage(icon); 
         
-        JButton btnApothiki = new JButton("Apothiki");
+        JButton btnApothiki = new JButton("Storage");
         btnApothiki.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		
@@ -72,7 +72,7 @@ public class Apothiki {
         btnApothiki.setBounds(116, 47, 193, 25);
         frame.getContentPane().add(btnApothiki);
         
-        JButton btnAllagiOriwnElleipsis = new JButton("Allagi Oriwn Elleipsis");
+        JButton btnAllagiOriwnElleipsis = new JButton("Change Thresholds");
         btnAllagiOriwnElleipsis.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		
@@ -85,7 +85,7 @@ public class Apothiki {
         btnAllagiOriwnElleipsis.setBounds(116, 99, 193, 25);
         frame.getContentPane().add(btnAllagiOriwnElleipsis);
         
-        JButton btnNewButton = new JButton("Alloiwmena Ylika");
+        JButton btnNewButton = new JButton("Expired Ingredients");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		

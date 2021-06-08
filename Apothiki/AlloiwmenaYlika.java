@@ -31,25 +31,7 @@ public class AlloiwmenaYlika {
 
 	private JFrame frame;
 	private JTable table;
-	//private String fagito;
-    //private int posotita;
     Date date = new Date();
-    
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AlloiwmenaYlika window = new AlloiwmenaYlika();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	public void showpligmenaylika() {
 		frame.show();
@@ -94,27 +76,21 @@ public class AlloiwmenaYlika {
         btnBack_1.setBounds(12, 32, 67, 15);
         frame.getContentPane().add(btnBack_1);
         
-        JLabel lblAlloiwmenaYlika = new JLabel("Alloiwmena Ylika");
+        JLabel lblAlloiwmenaYlika = new JLabel("Expired Ingredients");
         lblAlloiwmenaYlika.setBounds(157, 32, 126, 15);
         frame.getContentPane().add(lblAlloiwmenaYlika);
         
         try {
         	
-        	
+        	//syndesi me ti vasi + ektelesi query
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM food WHERE Imerominia <= '2021-06-01'";
+			String sql = "SELECT * FROM food WHERE Imerominia <= '2021-06-10'";
 			ResultSet rs = stmt.executeQuery(sql);
-			//PreparedStatement pst = connection.prepareStatement(sql);
-			//pst.setString(1, textFieldSearch.getText());
-			//ResultSet rs = pst.executeQuery();
-			//System.out.println("Fagito     Posotita     Imerominia");
 			
-			//String[] columnNames = {"Fagito", "Posotita", "Imerominia"};
-			
-			
-			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Fagito", "Posotita", "Imerominia","Oriaellipsis"}, 0){
+			//dimiourgia table me ta katallhla columns
+			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Ingredients", "Quantity", "Exp.Date","Sh.Limits"}, 0){
 
 			    @Override
 			    public boolean isCellEditable(int row, int column) {
@@ -126,29 +102,30 @@ public class AlloiwmenaYlika {
 			
 			while (rs.next()) {
 	            
+				//****apokthsh periexomenou ths kathe sthlhs ana seira***
 	            String fagito = rs.getString("Fagito");
 	            int posotita = rs.getInt("Posotita");
 	            String date = rs.getDate("Imerominia").toString();
 	            int oriaell = rs.getInt("Oriaellipsis");
+	            //****-****
 	            
-	            //System.out.println(fagito+"    "+posotita+"            "+date);
-	            
+	            //**prosthiki kathe grammhs sto table**
 	            String[] data = { fagito, Integer.toString(posotita), date, Integer.toString(oriaell)};
 	            tableModel.addRow(data);
-	            //model.addRow(new Object[]{fagito,posotita,date});
+	            //**-**
 	            
 	         }
-
-			//JTable jt = new JTable(new DefaultTableModel(columnNames, 0));
-			//JTable jt = new JTable(tableModel);
+			
+			//***dimiourgia scrollable pinaka***
 			JTable jt = new JTable(tableModel);
 			
 			JScrollPane js=new JScrollPane(jt);
-			//js.setVisible(true);
 			
-			js.setBounds(38, 99, 276, 104);
+			js.setBounds(12, 99, 302, 104);
 			frame.getContentPane().add(js);
+			//***-***
 			
+			//apeleutherosi porwn
 			c.close();
 			stmt.close();
 			rs.close();
@@ -158,28 +135,41 @@ public class AlloiwmenaYlika {
 			e.printStackTrace();
 		}
         
-        JButton btnAfairesi = new JButton("Afairesi");
+        JButton btnAfairesi = new JButton("Remove");
         btnAfairesi.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
         		try {
         			
+        			//sundesi me ti vasi dedomenwn + ektelesi query
         			Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 	        		Statement stmt = c.createStatement();
-	        		String sql = "DELETE FROM food WHERE Imerominia <= '2021-05-31'";
+	        		String sql = "DELETE FROM food WHERE Imerominia <= '2021-06-10'";
 	    			stmt.executeUpdate(sql);
 	    			
+	    			//apeleutherosi porwn
 	    			c.close();
 	    			stmt.close();
 	    			
-	    			JOptionPane.showMessageDialog(null, "Ta lhgmena Ylika afairethikan!");
+	    			JOptionPane.showMessageDialog(null, "Expired Ingredients have been removed!");
 	    			
 				} catch (ClassNotFoundException | SQLException e1) {
 					
 					e1.printStackTrace();
 				}
     			
+        		
+        		try {
+        			
+        			frame.dispose();
+        			AlloiwmenaYlika al = new AlloiwmenaYlika();
+        			al.frame.setVisible(true);
+					
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
         		
         	}
         });
