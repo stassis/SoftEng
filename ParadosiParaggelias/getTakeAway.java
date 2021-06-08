@@ -51,7 +51,7 @@ public class getTakeAway {
 	            
 	            int totalcost = q1*getPrices.rice + q2*getPrices.pizza + q3*getPrices.chicken + q4*getPrices.beef;
 	            
-	            String[] data = { Integer.toString(orderid), Integer.toString(custid), Integer.toString(q1), Integer.toString(q2), Integer.toString(q3), Integer.toString(q4), Integer.toString(totalcost)};
+	            String[] data = { Integer.toString(orderid), Integer.toString(custid), "x"+Integer.toString(q1), "x"+Integer.toString(q2), "x"+Integer.toString(q3), "x"+Integer.toString(q4), Integer.toString(totalcost)+"$"};
 	            tableModel.addRow(data);
 	            
 	            this.ids.add(Integer.toString(orderid));

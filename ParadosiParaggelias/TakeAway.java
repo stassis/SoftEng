@@ -24,6 +24,7 @@ public class TakeAway extends JFrame {
 	 * Create the frame.
 	 */
 	public TakeAway() {
+		setTitle("Delivery - Take Away");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 523, 461);

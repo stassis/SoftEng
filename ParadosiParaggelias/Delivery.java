@@ -31,6 +31,7 @@ public class Delivery extends JFrame {
 	 * Create the frame.
 	 */
 	public Delivery() {
+		setTitle("Delivery - Delivery");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 523, 461);

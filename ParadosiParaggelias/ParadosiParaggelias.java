@@ -65,7 +65,7 @@ public class ParadosiParaggelias {
 		
 		JLabel lblParaggeliesProsParadosi = new JLabel("Orders to be Delivered");
 		lblParaggeliesProsParadosi.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblParaggeliesProsParadosi.setBounds(110, 12, 281, 15);
+		lblParaggeliesProsParadosi.setBounds(128, 11, 212, 15);
 		frame.getContentPane().add(lblParaggeliesProsParadosi);
 		
 		JButton btnNewButton = new JButton("In Restaurant");
