@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -75,6 +76,8 @@ public class TakeAway extends JFrame {
 				
 				String id = String.valueOf(comboBox.getSelectedItem());
 				new submittedOrder(id);
+    			JOptionPane.showMessageDialog(null, "The Order has been delivered!");
+    			
 				dispose();
 				new ParadosiParaggelias();
 				ParadosiParaggelias.main(null);
@@ -94,6 +97,8 @@ public class TakeAway extends JFrame {
 				
 				String id = String.valueOf(comboBox.getSelectedItem());
 				new removeOrder(id);
+    			JOptionPane.showMessageDialog(null, "The Order has been cancelled!");
+
 				dispose();
 				new ParadosiParaggelias();
 				ParadosiParaggelias.main(null);
