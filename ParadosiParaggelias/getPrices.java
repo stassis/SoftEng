@@ -53,9 +53,9 @@ public class getPrices {
 		            
 		    }
 			
-			c.close();
-			stmt.close();
 			rs.close();
+			stmt.close();
+			c.close();
 		
 		}catch (ClassNotFoundException | SQLException e) {
 			

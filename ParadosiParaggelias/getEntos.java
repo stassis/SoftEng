@@ -59,9 +59,9 @@ public class getEntos {
 
 			jt = new JTable(tableModel);
 			
-			c.close();
-			stmt.close();
 			rs.close();
+			stmt.close();
+			c.close();
 			
 		}catch (ClassNotFoundException | SQLException e) {
 			
