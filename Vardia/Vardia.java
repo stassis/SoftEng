@@ -1,5 +1,6 @@
-//import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -35,6 +36,7 @@ public class Vardia extends JFrame {
 	 * Create the frame.
 	 */
 	public Vardia() {
+		setTitle("Vardia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 428, 419);
 		contentPane = new JPanel();
@@ -42,12 +44,10 @@ public class Vardia extends JFrame {
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		JButton btnNewButton = new JButton("Vardia");//epomeni othoni
+		JButton btnNewButton = new JButton("SHIFT");//epomeni othoni
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				//frame.hide();
-				
+
 				dispose();
 				new Clockscreen().setVisible(true);;
 				
@@ -58,6 +58,9 @@ public class Vardia extends JFrame {
 		
 		ImageIcon png = new ImageIcon("src/logo.png");
 		JLabel logo = new JLabel(png);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        setIconImage(icon); 
         
         logo.setBounds(114, 235, 202, 111);
         contentPane.add(logo);

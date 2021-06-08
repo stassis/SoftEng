@@ -1,5 +1,7 @@
 //import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -20,27 +22,12 @@ public class Clockscreen extends JFrame {
 	private String user;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Clockscreen frame = new Clockscreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	
 	
 	public Clockscreen() {
+		setTitle("Orario");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 505);
@@ -53,6 +40,9 @@ public class Clockscreen extends JFrame {
         JLabel logo = new JLabel(png);
         logo.setBounds(122, 324, 202, 111);
         contentPane.add(logo);
+        
+        Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        setIconImage(icon); 
         
         user = "Dianomeas";
         
@@ -83,7 +73,7 @@ public class Clockscreen extends JFrame {
 				//mhnuma othonis, an exei ginei idi clock in, kai patithei to clockin button	
 				}else {
 					
-					JOptionPane.showMessageDialog(null, "Egine hdh Clock in leme!");
+					JOptionPane.showMessageDialog(null, "You have already set Clock In!");
 				}
 			}
 		});

@@ -1,28 +1,17 @@
 import java.sql.Connection;
-//import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
-//import java.time.Duration;
-//import java.time.LocalTime;
 import javax.swing.JOptionPane;
-//import javax.swing.JScrollPane;
-//import javax.swing.JTable;
-//import javax.swing.table.DefaultTableModel;
 
 public class Schedule {
-	
-//	private String user;
-//	private Time start;
-//	private Time end;
+
 	private static boolean clockIn = false;
 	private static boolean clockOut = false;
 	private String st;
@@ -53,9 +42,7 @@ public class Schedule {
 			ResultSet rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
-	            
-//	            start = rs.getTime("Start");
-//	            end = rs.getTime("End");
+
 	            st= rs.getTime("Start").toString();
 	            en= rs.getTime("End").toString();
   
@@ -121,11 +108,7 @@ public class Schedule {
             	beforeTime=false;
             }
 			
-			//LocalTime current = java.time.LocalTime.now();
-	
-//            int resultStart = sqlTime.compareTo(start);
-//            int resultEnd = sqlTime.compareTo(end);
-//			
+		
 //**Debugging**	            System.out.println(resultStart);
 //**Debugging**	            System.out.println(resultEnd);
 //**Debugging**	            System.out.println(sqlTime);
@@ -136,14 +119,14 @@ public class Schedule {
             
             if(exactTime) {//To melos proswpikou (Sef,Dianomeas) kaneo clockin akrivws sthn wra enarxis
             	
-            	JOptionPane.showMessageDialog(null, "Enarxi Vardias!");
+            	JOptionPane.showMessageDialog(null, "Shift Start!");
 
             	clockIn = true;
             	clockOut = true;
             	
             }else if(inTime){//To melos proswpikou (Sef,Dianomeas) kanei clockin meta thn wra enarxis kai prin thn wra lixis
         		
-            	JOptionPane.showMessageDialog(null, "Enarxi Vardias me Kathysterisi! O Idiokthths tha eidopoihthei! Happy OAED...");
+            	JOptionPane.showMessageDialog(null, "Delayed Shift Start! The owner will be notified!");
 
             	clockIn = true;
             	clockOut = true;
@@ -151,12 +134,12 @@ public class Schedule {
             	
         	}else if(beforeTime){//To melos proswpikou (Sef,Dianomeas) kanei clockin prin thn wra enarxis
             	
-            	JOptionPane.showMessageDialog(null, "Viazesai na doulepseis! Tha pareis sigoyra promotion...");
+            	JOptionPane.showMessageDialog(null, "Restaurant has not Opened yet!");
             	
             	
             }else {//To melos proswpikou (Sef,Dianomeas) kanei clockin meta thn wra lixis
             	
-            	JOptionPane.showMessageDialog(null, "Re trele ekleise to magazi na poyme...");
+            	JOptionPane.showMessageDialog(null, "Store is closed...");
             	
             }
             
@@ -186,7 +169,6 @@ public void checkOutTimetable(String inputUser) throws SQLException {
 
 			while (rs.next()) {
 	            
-//				end = rs.getTime("End");
 	            st= rs.getTime("Start").toString();
 	            en= rs.getTime("End").toString();
   
@@ -252,25 +234,20 @@ public void checkOutTimetable(String inputUser) throws SQLException {
             	
             	beforeTime=false;
             }
-			
-//			java.util.Date utilDate = new java.util.Date();
-//            java.sql.Time sqlTime = new java.sql.Time(utilDate.getTime());
-            
-//			LocalTime current = java.time.LocalTime.now();
 	
-//            int resultEnd = sqlTime.compareTo(end);
-			
-            	
             	if(afterTime) {//An h wra einai meta th lixi tis vardias
             		
             		if(clockOut) {//An yparxei energo clockin, tote epityxes clockout(teleiwse th vardia)
-            			JOptionPane.showMessageDialog(null, "Epityxes Clock Out!");
+            			
+            			JOptionPane.showMessageDialog(null, "Successful Clock Out!");
             			clockIn = false;
                     	clockOut = false;
             			
             		}else {//Den yparxei energo clockin, opote h vardia exei lixi idi
-            			JOptionPane.showMessageDialog(null, "H vardia exei lhxei hdh!");
+            			
+            			JOptionPane.showMessageDialog(null, "Shift is Over!");
             		}
+            		
             	}else {//h wra einai prin th lixi tis vardias
             		
             		if(clockOut) {//exei ginei clock in, ara to *clockout* einai *true*. Ypologizetai h enapomeinousa wra mexri th lixi tis vardias
@@ -284,11 +261,11 @@ public void checkOutTimetable(String inputUser) throws SQLException {
             				    TimeUnit.MILLISECONDS.toSeconds(diff) - 
             				    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(diff)));
             			
-						JOptionPane.showMessageDialog(null, "I vardia den teleiwse! Ypoleipomenos xronos: "+hms);
+						JOptionPane.showMessageDialog(null, "Shift is not Over! Elapsed Time: "+hms);
 						
 	            	}else {//Den exei ginei pote clockin opote den mporei na ginei clockout
 	            		
-						JOptionPane.showMessageDialog(null, "Giati pote irthes?");
+						JOptionPane.showMessageDialog(null, "You have to Clock In first!");
 	            	}
             	}
             	
