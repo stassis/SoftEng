@@ -31,24 +31,28 @@ import java.sql.*;
         public Login (){
         f.setBackground(new java.awt.Color(200, 200, 200));
                 
-        wlc.setBounds(50,30,150,30);                      
-        msg.setBounds(50,50,150,30);  
-        logo.setBounds(20,300,200,150);
-        own.setBounds(50,100,100,30); 
-        chef.setBounds(50,150,100,30);
-        del.setBounds(50,200,100,30); 
-        bcust.setBounds(50,100,100,30); 
-        bstaff.setBounds(50,150,100,30); 
-        enter.setBounds(50,150,100,30);
-        back.setBounds(213, 0, 71, 23);
-        tf.setBounds(50,115,100,30);
+        wlc.setBounds(42,41,150,30);                      
+        msg.setBounds(42,59,150,30);  
+        logo.setBounds(15,251,200,150);
+        own.setBounds(67,100,100,30); 
+        chef.setBounds(67,150,100,30);
+        del.setBounds(67,200,100,30); 
+        bcust.setBounds(67,100,100,30); 
+        bstaff.setBounds(67,150,100,30); 
+        enter.setBounds(67,150,100,30);
+        back.setBounds(6, 6, 71, 23);
+        tf.setBounds(67,115,100,30);
+        
+        wlc.setHorizontalAlignment(SwingConstants.CENTER);
+        msg.setHorizontalAlignment(SwingConstants.CENTER);
+        
         f.getContentPane().setLayout(null);
         
         f.getContentPane().add(bcust);f.getContentPane().add(msg);f.getContentPane().add(bstaff);f.getContentPane().add(logo);f.getContentPane().add(wlc);
         
         
         
-        f.setSize(300,500);  f.setVisible(true);  
+        f.setSize(250,500);  f.setVisible(true);  
         
         f.addWindowListener(new WindowAdapter() {public void windowClosing(WindowEvent we) {System.exit(0);}});
         
