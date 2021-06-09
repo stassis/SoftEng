@@ -21,11 +21,12 @@ public class Table {
 		  Class.forName("com.mysql.cj.jdbc.Driver");
 	      Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 	   
-	      String sql = "UPDATE tables SET isOccupied = ?;";	               		      
+	      String sql = "UPDATE tables SET isOccupied = ? WHERE id = ?";	               		      
 	     
 	      PreparedStatement pr = c.prepareStatement(sql);
 	      pr.setInt (1, isOccup);
-	          
+	      pr.setInt (2, id);
+	      
 	      pr.execute();	               		      
 	      c.close();	               		   
 	    }
