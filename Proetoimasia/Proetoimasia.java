@@ -37,15 +37,14 @@ public class Proetoimasia {
         JButton btnBack_1 = new JButton("Back");
         btnBack_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
-        		
         		frame.dispose();
-        		new Proetoimasia();
+        		new MainMenu();
         	}
         });
         btnBack_1.setBounds(12, 32, 67, 15);
         frame.getContentPane().add(btnBack_1);
         
-        JLabel lblPrep = new JLabel("Pick and Order to view");
+        JLabel lblPrep = new JLabel("Pick an Order to view");
         lblPrep.setBounds(116, 52, 157, 15);
         frame.getContentPane().add(lblPrep);
 	//JList<String> list;
@@ -89,9 +88,7 @@ public class Proetoimasia {
                         
          }
 		
-		JLabel lblmsg = new JLabel("Select an order to execute");
-		frame.getContentPane().add(lblmsg);
-		
+				
 		JTable jt = new JTable(tableModel);		
 		JScrollPane js=new JScrollPane(jt);
 		//js.setVisible(true);
