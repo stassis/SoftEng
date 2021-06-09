@@ -96,6 +96,34 @@ CREATE TABLE `lastlog` (
 INSERT INTO `lastlog` (`id`, `Role`) VALUES
 (17, 'Customer');
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `id` int(11) NOT NULL,
+  `role` text NOT NULL,
+  `type` int(11) NOT NULL,
+  `info` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`id`, `role`, `type`, `info`) VALUES
+(3, 'delivery', 1, '1'),
+(4, 'owner', 1, '1'),
+(22, 'delivery', 1, '18');
+
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `notification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 -- --------------------------------------------------------
 
 --
