@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.*;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
     
@@ -30,11 +32,44 @@ public class MainMenu {
 		      System.err.println(ee.getMessage());
 		    }
 		
-        
-		JFrame f = new JFrame("Welcome to P.Diner.A.");
-		f.getContentPane().setLayout(null);
+        JFrame f = new JFrame("Welcome to P.Diner.A.");
+		f.setLayout(null);
 		
-		JLabel lblID = new JLabel("User ID = "+id);
+		JToolBar toolBar = new JToolBar();
+		toolBar.setBounds(0,0,285,40);
+		f.getContentPane().add(toolBar);
+		
+		toolBar.setRollover(true);
+		
+		JButton btnNotif = new JButton("Notifications");
+		btnNotif.addActionListener(new ActionListener(){  
+            public void actionPerformed(ActionEvent e){  
+            	f.dispose();
+            	Notification n = new Notification();
+            	n.showNotif(role);
+            	}});
+		
+		JLabel lblid = new JLabel("<html>User ID: "+id+". <br> Role: "+role+"</html>");
+		lblid.setHorizontalAlignment(SwingConstants.LEFT);
+		lblid.setFont(new Font("Calibri", Font.BOLD, 13));
+		lblid.setForeground(Color.RED);
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener(){  
+            public void actionPerformed(ActionEvent e){  
+            	f.dispose();
+            	new Login();
+            	}});
+		
+		toolBar.add(lblid); 
+		toolBar.add(Box.createGlue());
+		toolBar.add(btnNotif);
+		toolBar.addSeparator();
+		toolBar.add(btnLogout);
+						
+		//f.getContentPane().setLayout(BorderLayout);
+		
+		/*JLabel lblID = new JLabel("User ID = "+id);
 		lblID.setHorizontalAlignment(SwingConstants.CENTER);
 		lblID.setFont(new Font("Calibri", Font.BOLD, 13));
 		lblID.setBounds(195, 0, 89, 23);
@@ -48,7 +83,7 @@ public class MainMenu {
 		lblRole.setFont(new Font("Calibri", Font.BOLD, 13));
 		lblRole.setBackground((Color) null);
 		lblRole.setBounds(195, 11, 89, 28);
-		f.getContentPane().add(lblRole);
+		f.getContentPane().add(lblRole);*/
 		
 		ImageIcon png = new ImageIcon("src/logo.png");
         JLabel logo = new JLabel(png);
@@ -85,13 +120,18 @@ public class MainMenu {
             	}});
             	
         
-		logo.setBounds(41,280,200,150);
+		logo.setBounds(41,330,200,150);
 		}
 		
 		else if(role.equals("Chef")) {
 			JButton btnPrepare = new JButton("Prepare an Order");
 			btnPrepare.setBounds(35, 60, 213, 50);
 			f.getContentPane().add(btnPrepare);
+			btnPrepare.addActionListener(new ActionListener(){  
+	            public void actionPerformed(ActionEvent e){  
+	            	f.dispose();
+	            	new Proetoimasia();
+	            	}});
 			
 			JButton btnStorage = new JButton("Storage");
 			btnStorage.setBounds(35, 130, 213, 50);
@@ -115,7 +155,7 @@ public class MainMenu {
 	            	new Vardia();
 	            	}});
 			
-			logo.setBounds(41,320,200,150);
+			logo.setBounds(41,330,200,150);
 			}
 		
 		else if(role.equals("Owner")) {
@@ -145,7 +185,7 @@ public class MainMenu {
 			btnItems.setBounds(35,270,213,50);
 			f.getContentPane().add(btnItems);
 			
-			logo.setBounds(41,320,200,150);
+			logo.setBounds(41,330,200,150);
 			}
 		
 		else if(role.equals("Delivery")) {
