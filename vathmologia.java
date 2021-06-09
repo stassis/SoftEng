@@ -70,8 +70,7 @@ public class vathmologia {
 				
 				JOptionPane.showMessageDialog(null, "H vathmologia sas kataxwrithike euxaristoume pou mas epileksate");
 				frmRating.dispose();
-				kritiki k = new kritiki();
-				k.initialize();
+				new kritiki();
 			}
 		});
 		btnNewButton.setBounds(272, 55, 85, 21);
@@ -87,7 +86,7 @@ public class vathmologia {
 			public void actionPerformed(ActionEvent e) {
 				
 				frmRating.dispose();
-				new kritiki().initialize();
+				new kritiki();
 			}
 		});
 		btnNewButton_1.setBounds(0, 11, 65, 23);

@@ -56,7 +56,7 @@ public class kritiki {
 			public void actionPerformed(ActionEvent e) {
 				
 				frmRating.dispose();
-				new kritiki1().initialize();
+				new kritiki1();
 				
 				
 			}
@@ -69,8 +69,8 @@ public class kritiki {
 			public void actionPerformed(ActionEvent e) {
 				
 				frmRating.dispose();
-				vathmologia v = new vathmologia();
-				v.initialize();
+				new vathmologia();
+				
 			}
 		});
 		btnNewButton_1.setBounds(144, 72, 114, 32);

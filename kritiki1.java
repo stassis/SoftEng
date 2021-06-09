@@ -64,8 +64,8 @@ public class kritiki1 {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				kritiki k = new kritiki();
-				k.initialize();
+				new kritiki();
+				
 				JOptionPane.showMessageDialog(null, "H kritiki sas kataxwrithike euxaristoume pou mas epileksate");
 				
 			}
@@ -83,7 +83,7 @@ public class kritiki1 {
 			public void actionPerformed(ActionEvent e) {
 				
 				frame.dispose();
-				new kritiki().initialize();
+				new kritiki();
 			}
 		});
 		btnNewButton_1.setBounds(367, 32, 71, 23);
