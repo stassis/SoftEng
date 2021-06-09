@@ -45,43 +45,43 @@ public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 		lbl_logo.setBounds(83, 282, 202, 119);
 		contentPane.add(lbl_logo);
 		
-		JLabel lblNewLabel_1 = new JLabel("Sumplhrwste ta stoixeia tis paraggelias");
-		lblNewLabel_1.setBounds(74, 11, 300, 14);
+		JLabel lblNewLabel_1 = new JLabel("Fill in order details:");
+		lblNewLabel_1.setBounds(111, 11, 174, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblonoma = new JLabel("Onomatepwnumo:");
-		lblonoma.setBounds(21, 46, 112, 14);
+		JLabel lblonoma = new JLabel("Full name:");
+		lblonoma.setBounds(32, 46, 112, 14);
 		contentPane.add(lblonoma);
 		
 		Name = new JTextField();
-		Name.setBounds(143, 43, 182, 20);
+		Name.setBounds(111, 43, 182, 20);
 		contentPane.add(Name);
 		Name.setColumns(10);
 		
-		JLabel lbldieuthinsi = new JLabel("Odos kai arithmos:");
-		lbldieuthinsi.setBounds(21, 94, 123, 14);
+		JLabel lbldieuthinsi = new JLabel("Address:");
+		lbldieuthinsi.setBounds(32, 94, 123, 14);
 		contentPane.add(lbldieuthinsi);
 		
 		Address = new JTextField();
-		Address.setBounds(143, 91, 182, 20);
+		Address.setBounds(111, 91, 182, 20);
 		contentPane.add(Address);
 		Address.setColumns(10);
 		
-		JLabel lblorofos = new JLabel("Orofos:");
-		lblorofos.setBounds(21, 137, 56, 14);
+		JLabel lblorofos = new JLabel("Floor:");
+		lblorofos.setBounds(22, 149, 56, 14);
 		contentPane.add(lblorofos);
 		
 		Floor = new JTextField();
-		Floor.setBounds(74, 134, 56, 20);
+		Floor.setBounds(71, 146, 56, 20);
 		contentPane.add(Floor);
 		Floor.setColumns(10);
 		
-		JLabel lblkoudouni = new JLabel("Koudouni:");
-		lblkoudouni.setBounds(143, 137, 70, 14);
+		JLabel lblkoudouni = new JLabel("Door:");
+		lblkoudouni.setBounds(144, 149, 70, 14);
 		contentPane.add(lblkoudouni);
 		
 		Door = new JTextField();
-		Door.setBounds(202, 134, 123, 20);
+		Door.setBounds(202, 146, 123, 20);
 		contentPane.add(Door);
 		Door.setColumns(10);
 		
