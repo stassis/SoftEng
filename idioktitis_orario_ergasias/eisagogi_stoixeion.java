@@ -46,17 +46,17 @@ public class eisagogi_stoixeion extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("user");
+		JLabel lblNewLabel = new JLabel("User");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(59, 24, 84, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("enarxi vardias");
+		JLabel lblNewLabel_1 = new JLabel("Clock In:");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(59, 73, 84, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("telos vardias");
+		JLabel lblNewLabel_2 = new JLabel("Clock Out:");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(59, 110, 84, 14);
 		contentPane.add(lblNewLabel_2);
@@ -76,10 +76,10 @@ public class eisagogi_stoixeion extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Apothikeusi");
+		JButton btnNewButton = new JButton("Save");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Apothikeutike!");
+				JOptionPane.showMessageDialog(null, "Saved!");
 				dispose();
 				
 				orario or = new orario();

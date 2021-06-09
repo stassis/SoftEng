@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 
 public class orario {
 
-	private JFrame frame;
+	private JFrame frmPdineraTimetable;
 
 	/**
 	 * Launch the application.
@@ -19,7 +19,7 @@ public class orario {
 			public void run() {
 				try {
 					orario window = new orario();
-					window.frame.setVisible(true);
+					window.frmPdineraTimetable.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -28,7 +28,7 @@ public class orario {
 	}
 	
 	public void showmain() {
-		frame.show();
+		frmPdineraTimetable.show();
 	}
 
 	/**
@@ -42,29 +42,41 @@ public class orario {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("P.Diner.A. Orario");
-		frame.setBounds(100, 100, 440, 402);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmPdineraTimetable = new JFrame("P.Diner.A. Orario");
+		frmPdineraTimetable.setTitle("P.Diner.A. Timetable");
+		frmPdineraTimetable.setBounds(100, 100, 440, 402);
+		frmPdineraTimetable.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPdineraTimetable.getContentPane().setLayout(null);
 		
 		ImageIcon png = new ImageIcon("src/logo.png");
         JLabel logo = new JLabel(png);
         
         logo.setBounds(116, 236, 202, 111);
-        frame.getContentPane().add(logo);
+        frmPdineraTimetable.getContentPane().add(logo);
 		
-		JButton btnNewButton = new JButton("orario");
+		JButton btnNewButton = new JButton("Timetable");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				frame.dispose();
+				frmPdineraTimetable.dispose();
 				orario_info oi= new orario_info();
 				oi.setVisible(true);
 			
 			}
 		});
 		btnNewButton.setBounds(167, 63, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		frmPdineraTimetable.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmPdineraTimetable.dispose();
+				new MainMenu();
+			}
+		});
+		btnNewButton_1.setBounds(0, 11, 76, 23);
+		frmPdineraTimetable.getContentPane().add(btnNewButton_1);
 	}
 
 }
