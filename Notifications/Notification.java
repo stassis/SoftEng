@@ -27,7 +27,13 @@ public class Notification {
 		this.role = role;
 		this.msg = msg;
 		this.info = info;
-		addNotif(role, type, Integer.parseInt(info));
+		
+		if(type != 3) {
+			
+			addNotif(role, type, Integer.parseInt(info));
+		}else {
+			addNotif(role, type, info);
+		}
 	}
 	
 	Notification (String role, int type, int info) { 
@@ -35,14 +41,45 @@ public class Notification {
 	}
 	
 	public void addNotif(String role, int type, int info) {
+		
 		try{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		    Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+		    String sql = "INSERT INTO `notification` (`role`, `type`, `info`) VALUES ('"+role+"','"+type+"','"+info+"')";	               		      
+		    PreparedStatement pr = c.prepareStatement(sql);
+		      
+		    pr.execute();	               		      
+		    c.close();	               		   
+	    }
+	    catch (Exception ee)
+	    {
+	      System.err.println("Got an exception!");
+	      System.err.println(ee.getMessage());
+	    }
+	}
+	
+	public void addNotif(String role, int type, String info) {
+		
+		try{
+			
 		Class.forName("com.mysql.cj.jdbc.Driver");
 	    Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
-	    String sql = "INSERT INTO `notification` (`role`, `type`, `info`) VALUES ('"+role+"','"+type+"','"+info+"')";	               		      
-	    PreparedStatement pr = c.prepareStatement(sql);
-	      
-	    pr.execute();	               		      
-	    c.close();	               		   
+	    Statement stmt = c.createStatement();
+	    String if_exists = "SELECT info FROM notification WHERE info='"+info+" shortage"+"'";	               		      
+	    ResultSet rs = stmt.executeQuery(if_exists);
+	    if(!rs.next()) {//an den yparxei grammh pou epestrepse to ResulSet
+
+		    String sql = "INSERT INTO `notification` (`role`, `type`, `info`) VALUES ('"+role+"','"+type+"','"+info+" shortage"+"')";	               		      
+		    PreparedStatement pr = c.prepareStatement(sql);
+		    pr.execute(); 
+		    
+		    pr.close();
+	    }
+	    
+	    rs.close();
+	    stmt.close();
+	    c.close();	
+	    
 	    }
 	    catch (Exception ee)
 	    {
