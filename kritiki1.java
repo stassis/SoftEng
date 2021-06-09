@@ -1,4 +1,6 @@
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollBar;
@@ -10,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
+import java.awt.Font;
 
 public class kritiki1 {
 
@@ -43,19 +46,21 @@ public class kritiki1 {
 	 */
 	public void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 452, 393);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
+		
 		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(133, 10, 211, 92);
+		editorPane.setBounds(121, 11, 211, 92);
 		frame.getContentPane().add(editorPane);
 		
-		JLabel lblNewLabel = new JLabel("grapste thn kritiki sas");
-		lblNewLabel.setBounds(10, 22, 101, 33);
+		JLabel lblNewLabel = new JLabel("Write your Review:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 22, 113, 33);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("upovolh");
+		JButton btnNewButton = new JButton("Submit");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
@@ -65,12 +70,15 @@ public class kritiki1 {
 				
 			}
 		});
-		btnNewButton.setBounds(185, 132, 85, 21);
+		btnNewButton.setBounds(177, 134, 85, 21);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(kritiki1.class.getResource("/source/logo.png")));
-		lblNewLabel_1.setBounds(133, 163, 211, 90);
-		frame.getContentPane().add(lblNewLabel_1);
+		ImageIcon png = new ImageIcon("src/logo.png");
+        JLabel logo = new JLabel(png);
+		logo.setBounds(121,184,200,150);
+		frame.getContentPane().add(logo);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        frame.setIconImage(icon);
 	}
 }

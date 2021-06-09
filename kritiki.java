@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -10,7 +11,7 @@ import javax.swing.ImageIcon;
 
 public class kritiki {
 
-	private JFrame frame;
+	private JFrame frmRating;
 
 	/**
 	 * Launch the application.
@@ -20,7 +21,7 @@ public class kritiki {
 			public void run() {
 				try {
 					kritiki window = new kritiki();
-					window.frame.setVisible(true);
+					window.frmRating.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,39 +40,44 @@ public class kritiki {
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
-		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(kritiki.class.getResource("/source/logo.png")));
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.setVisible(true);
-		JButton btnkritiki = new JButton("kritiki");
+		
+		frmRating = new JFrame();
+		frmRating.setTitle("Rating");
+		frmRating.setBounds(100, 100, 450, 300);
+		frmRating.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRating.getContentPane().setLayout(null);
+		frmRating.setVisible(true);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        frmRating.setIconImage(icon); 
+        
+		JButton btnkritiki = new JButton("Short Text");
 		btnkritiki.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
+				frmRating.setVisible(false);
 				kritiki1 k1 = new kritiki1();
 				k1.initialize();
 				
 			}
 		});
 		btnkritiki.setBounds(144, 10, 114, 40);
-		frame.getContentPane().add(btnkritiki);
+		frmRating.getContentPane().add(btnkritiki);
 		
-		JButton btnNewButton_1 = new JButton("vathmologia");
+		JButton btnNewButton_1 = new JButton("Rate with Stars");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
+				frmRating.setVisible(false);
 				vathmologia v = new vathmologia();
 				v.initialize();
 			}
 		});
 		btnNewButton_1.setBounds(144, 72, 114, 32);
-		frame.getContentPane().add(btnNewButton_1);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(kritiki.class.getResource("/source/logo.png")));
-		lblNewLabel.setBounds(99, 128, 258, 111);
-		frame.getContentPane().add(lblNewLabel);
+		frmRating.getContentPane().add(btnNewButton_1);
+
+		ImageIcon png = new ImageIcon("src/logo.png");
+        JLabel logo = new JLabel(png);
+		logo.setBounds(110,113,200,150);
+		frmRating.getContentPane().add(logo);
 	}
 
 }

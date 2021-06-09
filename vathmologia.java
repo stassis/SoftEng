@@ -1,4 +1,6 @@
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,11 +11,11 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class vathmologia {
 
-	private JFrame frame;
-	private JTextField txtEpileksteAsteria;
+	private JFrame frmRating;
 
 	/**
 	 * Launch the application.
@@ -23,7 +25,7 @@ public class vathmologia {
 			public void run() {
 				try {
 					vathmologia window = new vathmologia();
-					window.frame.setVisible(true);
+					window.frmRating.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,37 +44,42 @@ public class vathmologia {
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.setVisible(true);
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(vathmologia.class.getResource("/source/logo.png")));
-		lblNewLabel.setBounds(105, 146, 209, 107);
-		frame.getContentPane().add(lblNewLabel);
+		frmRating = new JFrame();
+		frmRating.setTitle("Rating");
+		frmRating.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 16));
+		frmRating.setBounds(100, 100, 450, 300);
+		frmRating.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRating.getContentPane().setLayout(null);
+		frmRating.setVisible(true);
 		
-		txtEpileksteAsteria = new JTextField();
-		txtEpileksteAsteria.setText("epilekste asteria");
-		txtEpileksteAsteria.setBounds(10, 55, 96, 19);
-		frame.getContentPane().add(txtEpileksteAsteria);
-		txtEpileksteAsteria.setColumns(10);
+		ImageIcon png = new ImageIcon("src/logo.png");
+        JLabel logo = new JLabel(png);
+		logo.setBounds(111,113,200,150);
+		frmRating.getContentPane().add(logo);
+		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        frmRating.setIconImage(icon);
 		
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(158, 55, 46, 20);
-		frame.getContentPane().add(spinner);
+		frmRating.getContentPane().add(spinner);
 		
-		JButton btnNewButton = new JButton("upovolh");
+		JButton btnNewButton = new JButton("Submit");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
+				
+				JOptionPane.showMessageDialog(null, "H vathmologia sas kataxwrithike euxaristoume pou mas epileksate");
+				frmRating.dispose();
 				kritiki k = new kritiki();
 				k.initialize();
-				JOptionPane.showMessageDialog(null, "H vathmologia sas kataxwrithike euxaristoume pou mas epileksate");
 			}
 		});
-		btnNewButton.setBounds(142, 115, 85, 21);
-		frame.getContentPane().add(btnNewButton);
+		btnNewButton.setBounds(272, 55, 85, 21);
+		frmRating.getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("Choose Stars");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setBounds(10, 58, 105, 14);
+		frmRating.getContentPane().add(lblNewLabel);
 	}
-
 }
