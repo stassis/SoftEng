@@ -27,7 +27,7 @@ public class getEntos {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 			Statement stmt = c.createStatement();
-			String sql = "SELECT order_id,customer_id,quantity1,quantity2,quantity3,quantity4,orderstable FROM orders WHERE delivery='Entos tou xwrou' AND flag='submitted'";
+			String sql = "SELECT order_id,customer_id,quantity1,quantity2,quantity3,quantity4,orderstable FROM orders WHERE delivery='Entos tou xwrou' AND flag='ready'";
 			ResultSet rs = stmt.executeQuery(sql);	
 			
 			DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Order ID", "Customer ID", "Rice", "Pizza","Chicken","Beef","Table","Total Cost"}, 0){

@@ -100,5 +100,16 @@ public class ParadosiParaggelias {
 		});
 		btnTakeAway.setBounds(144, 251, 142, 46);
 		frame.getContentPane().add(btnTakeAway);
+		
+		 JButton home = new JButton("Home");
+	        home.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		
+	        		frame.dispose();
+	        		new MainMenu();
+	        	}
+	        });
+	        home.setBounds(0, 11, 76, 23);
+	        frame.add(home);
 	}
 }
