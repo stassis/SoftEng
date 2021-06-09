@@ -64,6 +64,17 @@ public class Vardia extends JFrame {
         
         logo.setBounds(114, 235, 202, 111);
         contentPane.add(logo);
+        
+        JButton home = new JButton("Home");
+        home.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		dispose();
+        		new MainMenu();
+        	}
+        });
+        home.setBounds(0, 11, 76, 23);
+        contentPane.add(home);
 	}
 
 }
