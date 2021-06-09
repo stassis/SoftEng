@@ -139,7 +139,7 @@ public class MainMenu {
 			btnStorage.addActionListener(new ActionListener(){  
 	            public void actionPerformed(ActionEvent e){  
 	            	f.dispose();
-	            	new Apothiki();
+	            	new Apothiki().showapothiki();
 	            	}});
 			
 			JButton btnMenu = new JButton("Menu");
@@ -152,7 +152,7 @@ public class MainMenu {
 			btnClock.addActionListener(new ActionListener(){  
 	            public void actionPerformed(ActionEvent e){  
 	            	f.dispose();
-	            	new Vardia();
+	            	new Vardia().setVisible(true);
 	            	}});
 			
 			logo.setBounds(41,330,200,150);
@@ -197,6 +197,12 @@ public class MainMenu {
 			JButton btnPrepare = new JButton("Deliver Order");
 			btnPrepare.setBounds(35, 60, 213, 50);
 			f.getContentPane().add(btnPrepare);
+			btnPrepare.addActionListener(new ActionListener(){  
+	            public void actionPerformed(ActionEvent e){  
+	            	f.dispose();
+	            	new ParadosiParaggelias();
+					ParadosiParaggelias.main(null);
+	        }});
 			
 			JButton btnClock = new JButton("Clock In/out");
 			btnClock.setBounds(35,130,213,50);
@@ -204,8 +210,8 @@ public class MainMenu {
 			btnClock.addActionListener(new ActionListener(){  
 	            public void actionPerformed(ActionEvent e){  
 	            	f.dispose();
-	            	new Vardia();
-	            	}});
+	            	new Vardia().setVisible(true);
+	        }});
 			
 			logo.setBounds(41,210,200,150);
 			}
