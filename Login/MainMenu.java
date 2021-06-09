@@ -213,7 +213,18 @@ public class MainMenu {
 	            	new Vardia().setVisible(true);
 	        }});
 			
-			logo.setBounds(41,210,200,150);
+	        JButton btnTables = new JButton("Tables");
+	        btnTables.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		
+	        		f.dispose();
+	        		new alterTables().setVisible(true);
+	        	}
+	        });
+	        btnTables.setBounds(35, 200, 213,50);
+	        f.getContentPane().add(btnTables);
+			
+			logo.setBounds(41,280,200,150);
 			}
 		
 		f.getContentPane().add(logo);

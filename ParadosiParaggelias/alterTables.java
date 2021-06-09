@@ -68,8 +68,7 @@ public class alterTables extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
-				new ParadosiParaggelias();
-				ParadosiParaggelias.main(null);
+				new MainMenu();
 			}
 		});
 		btnNewButton_1.setBounds(0, 11, 76, 23);
