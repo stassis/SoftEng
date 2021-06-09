@@ -24,7 +24,7 @@ public class Kratisi {
 		
 		ImageIcon png = new ImageIcon("src/logo.png");
         JLabel logo = new JLabel(png);
-        logo.setBounds(20,200,200,150);
+        logo.setBounds(167,202,200,150);
         f.getContentPane().add(logo);
         
 		JLabel lblStart = new JLabel("Start");
@@ -75,6 +75,17 @@ public class Kratisi {
 		spEndmm.setModel(new SpinnerNumberModel(0, 0, 59, 1));
 		spEndmm.setBounds(151, 115, 46, 20);
 		f.getContentPane().add(spEndmm);
+		
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				f.dispose();
+				new MainMenu();
+			}
+		});
+		btnNewButton.setBounds(398, 29, 78, 23);
+		f.getContentPane().add(btnNewButton);
 					
 		f.setSize(500,400);f.setVisible(true);
 		
@@ -109,5 +120,4 @@ public class Kratisi {
 	public static void main(String Args[]) {
 		new Kratisi(12);
 	}
-	
 	}

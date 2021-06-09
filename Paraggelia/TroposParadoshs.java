@@ -34,11 +34,11 @@ public class TroposParadoshs extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_msg = new JLabel("Choose delivery method:");
+		JLabel lbl_msg = new JLabel("Epilekste tropo paradoshs:");
 		lbl_msg.setBounds(125, 28, 156, 14);
 		contentPane.add(lbl_msg);
 		
-		JRadioButton rdbtn_entos = new JRadioButton("Inside store");
+		JRadioButton rdbtn_entos = new JRadioButton("Entos tou xwrou");
 		rdbtn_entos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -51,7 +51,7 @@ public class TroposParadoshs extends JFrame {
 		rdbtn_entos.setBounds(125, 64, 150, 23);
 		contentPane.add(rdbtn_entos);
 		
-		JRadioButton rdbtn_delivery = new JRadioButton("Delivery at home");
+		JRadioButton rdbtn_delivery = new JRadioButton("Delivery sto spiti");
 		rdbtn_delivery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -102,27 +102,27 @@ public class TroposParadoshs extends JFrame {
 				}else {
 					del = "Entos tou xwrou";
 					dispose();
-					Table t = new Table(1);					
-					showTables scr = new showTables(t.getTables());
+					Table t = new Table(1);
+					new showTables(t.getTables());
+					//showTables scr = new showTables();
 					//scr.setVisible(true);
 					
 				}
 				
 			}
 		});
-		btn_OK.setBounds(207, 190, 89, 23);
+		btn_OK.setBounds(142, 189, 89, 23);
 		contentPane.add(btn_OK);
 		
-		JButton btnNewButton = new JButton("back");
+		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
 				new MainMenu();
-				
 			}
 		});
-		btnNewButton.setBounds(54, 190, 89, 23);
+		btnNewButton.setBounds(0, 11, 77, 23);
 		contentPane.add(btnNewButton);
 		
 	}
