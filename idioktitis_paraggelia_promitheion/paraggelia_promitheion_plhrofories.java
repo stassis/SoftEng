@@ -69,12 +69,12 @@ public class paraggelia_promitheion_plhrofories {
 		logo.setBounds(116, 236, 202, 111);
         frame.getContentPane().add(logo);
         
-        JLabel title = new JLabel("Apothiki");
+        JLabel title = new JLabel("Storage");
 		title.setFont(new Font("Tahoma", Font.BOLD, 16));
 		title.setBounds(166, 10, 77, 15);
 		frame.getContentPane().add(title);
 		
-		JButton btnNewButton = new JButton("Paraggelia Promithion");
+		JButton btnNewButton = new JButton("Order Supplies");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				

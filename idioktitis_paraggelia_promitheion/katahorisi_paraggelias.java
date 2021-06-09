@@ -90,12 +90,12 @@ public class katahorisi_paraggelias {
         
         
         
-        JLabel lblOnomaYlikoy = new JLabel("Onoma Ylikoy:");
+        JLabel lblOnomaYlikoy = new JLabel("Supply Name:");
         lblOnomaYlikoy.setFont(new Font("Dialog", Font.PLAIN, 10));
         lblOnomaYlikoy.setBounds(50, 85, 82, 15);
         frame.getContentPane().add(lblOnomaYlikoy);
         
-        JLabel lblPosothta = new JLabel("Posothta:");
+        JLabel lblPosothta = new JLabel("Quantity:");
         lblPosothta.setFont(new Font("Dialog", Font.PLAIN, 10));
         lblPosothta.setBounds(250, 84, 70, 15);
         frame.getContentPane().add(lblPosothta);
@@ -105,7 +105,7 @@ public class katahorisi_paraggelias {
         //System.out.println(dtf.format(now)); 
         
         
-        JButton btnProsthiki = new JButton("Prosthiki");
+        JButton btnProsthiki = new JButton("Order!");
         btnProsthiki.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		

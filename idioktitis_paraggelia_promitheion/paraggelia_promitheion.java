@@ -58,7 +58,7 @@ public class paraggelia_promitheion {
         Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
         frame.setIconImage(icon); 
         
-        JButton btninfo = new JButton("Apothiki");
+        JButton btninfo = new JButton("Storage");
         btninfo.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		
@@ -70,6 +70,17 @@ public class paraggelia_promitheion {
         });
         btninfo.setBounds(116, 47, 193, 25);
         frame.getContentPane().add(btninfo);
+        
+        JButton btnNewButton = new JButton("Back");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		frame.dispose();
+        		new MainMenu();
+        	}
+        });
+        btnNewButton.setBounds(0, 11, 79, 23);
+        frame.getContentPane().add(btnNewButton);
         
         
 	}
