@@ -34,11 +34,11 @@ public class TroposParadoshs extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_msg = new JLabel("Epilekste tropo paradoshs:");
+		JLabel lbl_msg = new JLabel("Choose delivery method:");
 		lbl_msg.setBounds(125, 28, 156, 14);
 		contentPane.add(lbl_msg);
 		
-		JRadioButton rdbtn_entos = new JRadioButton("Entos tou xwrou");
+		JRadioButton rdbtn_entos = new JRadioButton("Inside store");
 		rdbtn_entos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -51,7 +51,7 @@ public class TroposParadoshs extends JFrame {
 		rdbtn_entos.setBounds(125, 64, 150, 23);
 		contentPane.add(rdbtn_entos);
 		
-		JRadioButton rdbtn_delivery = new JRadioButton("Delivery sto spiti");
+		JRadioButton rdbtn_delivery = new JRadioButton("Delivery at home");
 		rdbtn_delivery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
