@@ -161,6 +161,11 @@ public class MainMenu {
 		else if(role.equals("Owner")) {
 			JButton btnStaff = new JButton("Staff Management");
 			btnStaff.setBounds(35, 60, 213, 50);
+			btnStaff.addActionListener(new ActionListener(){  
+	            public void actionPerformed(ActionEvent e){  
+	            	f.dispose();
+	            	new Staff();
+	            	}});
 			f.getContentPane().add(btnStaff);
 			
 			JButton btnSched = new JButton("Staff Schedule");
