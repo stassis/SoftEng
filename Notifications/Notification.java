@@ -27,6 +27,11 @@ public class Notification {
 		this.role = role;
 		this.msg = msg;
 		this.info = info;
+		addNotif(role, type, Integer.parseInt(info));
+	}
+	
+	Notification (String role, int type, int info) { 
+		new Notification (role, type, String.valueOf(info));
 	}
 	
 	public void addNotif(String role, int type, int info) {
@@ -92,9 +97,6 @@ public class Notification {
 	}
 	
 	
-	
-	
-	
 	public DefaultTableModel getNotif(String role) {
 		
 		DefaultTableModel tableModel = new DefaultTableModel(new String[]{"id", "type", "info"}, 0){@Override
@@ -106,19 +108,21 @@ public class Notification {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT id,type,info FROM notification WHERE role = '"+role+"'";
 			String txt = "";
+			String info2 = "";
 			
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
+				String info = rs.getString("info");
 	            int type = rs.getInt("type");
 	            	if(type == 0) {txt = "New order";}
-	            	if(type == 1) {txt = "Order Ready";}
-	            	if(type == 2) {txt = "Employee Late";}
-	            	if(type == 3) {txt = "Ingredient Shortage";}
+	            	if(type == 1) {txt = "Order Ready"; info2 = parseInfo(1, info);}
+	            	if(type == 2) {txt = "Employee Late"; info2 = parseInfo(2, info);}
+	            	if(type == 3) {txt = "Ingredient Shortage"; info2 = parseInfo(3, info);}
 	            	
-	            String info= rs.getString("info");
+	           
 	            String id = String.valueOf(rs.getInt("id"));
-	            String[] data = {id, txt, info};
+	            String[] data = {id, txt, info2};
 	            tableModel.addRow(data);
 	          }
 
@@ -156,6 +160,15 @@ public class Notification {
 	      System.err.println("Got an exception!");
 	      System.err.println(ee.getMessage());
 	    }
+	}
+	
+	
+	public String parseInfo(int type, String info) { 
+		if(type <= 1) {return "Order ID: "+info;}
+		if(type == 2) {return "Staff ID: "+info;}
+		if(type == 3) {return "Ingredient "+info;}
+		
+		return "";
 	}
 	
 	
