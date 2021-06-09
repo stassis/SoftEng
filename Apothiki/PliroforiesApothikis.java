@@ -131,7 +131,10 @@ public class PliroforiesApothikis {
 	            String[] data = { fagito, Integer.toString(posotita), date, Integer.toString(oriaell)};
 	            tableModel.addRow(data);
 	            
-	         // if(posotita<oriaell){ notifyHost() }
+	            if(posotita<=oriaell){ 
+	            	
+	            	new Notification("chef", 3, fagito); 
+	            }
 	            
 	         }
 
