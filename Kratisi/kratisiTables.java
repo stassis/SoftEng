@@ -11,10 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class showTables {
+public class kratisiTables {
 	
 	
-	public showTables(int sH, int sm, int eH, int em, int Seats, int cust_id, String Name) {
+	public kratisiTables(int sH, int sm, int eH, int em, int Seats, int cust_id, String Name) {
 		
 		int start = sH*100 + sm;
 		int end = eH*100 + em;

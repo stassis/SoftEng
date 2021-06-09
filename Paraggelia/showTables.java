@@ -13,7 +13,7 @@ public class showTables {
 	public static int table;
 	
 	
-	showTables(int flag) {
+	showTables(int[] flag) {
 		
 		JFrame stf = new JFrame("Choose your table");
 		stf.getContentPane().setLayout(null);
@@ -27,45 +27,47 @@ public class showTables {
 		JLabel lbdiner = new JLabel(diner);
 		lbdiner.setBounds(0,0,400,400);
 		
-		if((flag % 10) == 0) {stf.getContentPane().add(t1);}
-		flag = flag/10;
-		if((flag % 10) == 0) {stf.getContentPane().add(t2);}
-		flag = flag/10;
-		if((flag % 1000) == 0) {stf.getContentPane().add(t3);}
-		flag = flag/10;
-		if((flag % 10000) == 0) {stf.getContentPane().add(t4);}
-		flag = flag/10;
-		if((flag % 100000) == 0) {stf.getContentPane().add(t5);}
+		if(flag[0]==0) {stf.getContentPane().add(t1);}
+		if(flag[1]==0) {stf.getContentPane().add(t2);}
+		if(flag[2]==0) {stf.getContentPane().add(t3);}
+		if(flag[3]==0) {stf.getContentPane().add(t4);}
+		if(flag[4]==0) {stf.getContentPane().add(t5);}
 		
 		stf.getContentPane().add(lbdiner);
 		stf.setSize(400,500); stf.setVisible(true);
+		Table t = new Table(1);
 		
 		t1.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				table=1;
+				t.setTableStatus(1,1);
 				stf.dispose();
 				Menou scr = new Menou();
 				scr.setVisible(true);
 				}}); 
 		t2.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				table=2;
+				t.setTableStatus(2,1);
 				stf.dispose();
 				Menou scr = new Menou();
 				scr.setVisible(true);
 				}});  
 		t3.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				table=3;
+				t.setTableStatus(3,1);
 				stf.dispose();
 				Menou scr = new Menou();
 				scr.setVisible(true);
 				}}); 
 		t4.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				table=4;
+				t.setTableStatus(4,1);
 				stf.dispose();
 				Menou scr = new Menou();
 				scr.setVisible(true);
 				}});  
 		t5.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
 				table=5;
+				t.setTableStatus(5,1);
 				stf.dispose();
 				Menou scr = new Menou();
 				scr.setVisible(true);

@@ -13,8 +13,7 @@ public class Table {
 		this.id=id;
 	}
 	
-	public void setTableStatus (int id, int isOccup) {
-		this.isOccupied=isOccup;
+	public static void setTableStatus (int id, int isOccup) {
 		
 		try
 	    {
@@ -22,7 +21,7 @@ public class Table {
 		  Class.forName("com.mysql.cj.jdbc.Driver");
 	      Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 	   
-	      String sql = "INSERT INTO `tables` (`isOccupied`) VALUES (?);";	               		      
+	      String sql = "UPDATE tables SET isOccupied = ?;";	               		      
 	     
 	      PreparedStatement pr = c.prepareStatement(sql);
 	      pr.setInt (1, isOccup);
@@ -39,22 +38,21 @@ public class Table {
 	}
 	
 	
-	public int getTables() {
-		int tmp=0, flag=0;
+	public int[] getTables() {
+		int[] flag = {0,0,0,0,0};
 		try
 	    {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
 			
-			String sql = "SELECT * FROM `tables` WHERE 1";
+			String sql = "SELECT * FROM tables";
 			
 			Statement st = c.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			
 			int count=0;
 			while(rs.next()) {
-				tmp = rs.getInt("isOccupied");
-				flag = flag + ((10^count) * tmp); 
+				flag[count] = rs.getInt("isOccupied");
 				count++;}
 			          		   
 	    }
@@ -63,7 +61,6 @@ public class Table {
 	      System.err.println("Got an exception!");
 	      System.err.println(ee.getMessage());
 	    }
-		return flag; //return a 5 digit binary int [table5, table4, table3, table2, table1]. use MOD to choose table
-		// example: flag = 00101 -> Tables 3 and 1 are isOccupied = true
+		return flag; 
 	}
 }
