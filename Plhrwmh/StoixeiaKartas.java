@@ -36,11 +36,11 @@ public class StoixeiaKartas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Eisagete ta stoixeia ths kartas");
-		lblNewLabel.setBounds(100, 11, 172, 14);
+		JLabel lblNewLabel = new JLabel("Fill in card details:");
+		lblNewLabel.setBounds(119, 11, 172, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Arithmos kartas:");
+		JLabel lblNewLabel_1 = new JLabel("Card number:");
 		lblNewLabel_1.setBounds(20, 43, 100, 14);
 		contentPane.add(lblNewLabel_1);
 		
@@ -49,7 +49,7 @@ public class StoixeiaKartas extends JFrame {
 		contentPane.add(txtArithmosKartas);
 		txtArithmosKartas.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Onoma katoxou:");
+		JLabel lblNewLabel_2 = new JLabel("Owner's name:");
 		lblNewLabel_2.setBounds(20, 89, 100, 14);
 		contentPane.add(lblNewLabel_2);
 		
@@ -58,11 +58,11 @@ public class StoixeiaKartas extends JFrame {
 		contentPane.add(txtOnomaKartas);
 		txtOnomaKartas.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Hmeromhnia lhkshs kartas:");
-		lblNewLabel_3.setBounds(20, 131, 172, 14);
+		JLabel lblNewLabel_3 = new JLabel("Expire date:");
+		lblNewLabel_3.setBounds(34, 130, 172, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Mhnas:");
+		JLabel lblNewLabel_4 = new JLabel("Month:");
 		lblNewLabel_4.setBounds(20, 159, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
@@ -71,7 +71,7 @@ public class StoixeiaKartas extends JFrame {
 		contentPane.add(txtMhnasLhkshs);
 		txtMhnasLhkshs.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Etos:");
+		JLabel lblNewLabel_5 = new JLabel("Year:");
 		lblNewLabel_5.setBounds(175, 159, 46, 14);
 		contentPane.add(lblNewLabel_5);
 		
