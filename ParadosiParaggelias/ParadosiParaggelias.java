@@ -76,7 +76,7 @@ public class ParadosiParaggelias {
 				new EntosXwrou().setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(144, 72, 142, 46);
+		btnNewButton.setBounds(144, 52, 142, 46);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnDelivery = new JButton("Delivery");
@@ -87,7 +87,7 @@ public class ParadosiParaggelias {
 				new Delivery().setVisible(true);
 			}
 		});
-		btnDelivery.setBounds(144, 162, 142, 46);
+		btnDelivery.setBounds(144, 128, 142, 46);
 		frame.getContentPane().add(btnDelivery);
 		
 		JButton btnTakeAway = new JButton("Take Away");
@@ -98,7 +98,7 @@ public class ParadosiParaggelias {
 				new TakeAway().setVisible(true);
 			}
 		});
-		btnTakeAway.setBounds(144, 251, 142, 46);
+		btnTakeAway.setBounds(144, 200, 142, 46);
 		frame.getContentPane().add(btnTakeAway);
 		
 		 JButton home = new JButton("Home");
@@ -110,6 +110,17 @@ public class ParadosiParaggelias {
 	        	}
 	        });
 	        home.setBounds(0, 11, 76, 23);
-	        frame.add(home);
+	        frame.getContentPane().add(home);
+	        
+	        JButton btnTables = new JButton("Tables");
+	        btnTables.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		
+	        		frame.dispose();
+	        		new alterTables().setVisible(true);
+	        	}
+	        });
+	        btnTables.setBounds(144, 273, 142, 46);
+	        frame.getContentPane().add(btnTables);
 	}
 }
