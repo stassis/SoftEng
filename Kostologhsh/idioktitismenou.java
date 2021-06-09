@@ -19,33 +19,7 @@ public class idioktitismenou {
 
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					idioktitismenou window = new idioktitismenou();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public idioktitismenou() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	public void initialize() {
 		frame = new JFrame();
 		//frame.setIconImage(Toolkit.getDefaultToolkit().getImage(idioktitismenou.class.getResource("/source/logo.png")));
 		frame.setBounds(50, 50, 250, 400);
@@ -82,8 +56,7 @@ public class idioktitismenou {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				kostologhsh k = new kostologhsh();
-				k.initialize();
+				new kostologhsh();
 			}
 		});
 		btnNewButton.setBounds(42, 125, 150, 70);
