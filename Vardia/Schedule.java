@@ -20,6 +20,7 @@ public class Schedule {
 	private boolean beforeTime;
 	private boolean afterTime;
 	private boolean exactTime;
+	private int id;
 	
 	public boolean clockInState(){
 		return clockIn;
@@ -130,7 +131,31 @@ public class Schedule {
 
             	clockIn = true;
             	clockOut = true;
-            	//notifyHost();
+            	
+            	try{
+            		
+          	      Class.forName("com.mysql.cj.jdbc.Driver");
+          	      Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+          	      Statement st = c.createStatement();
+          	      String query = "SELECT `id` FROM lastlog";	               		      
+          	      ResultSet res = stmt.executeQuery(query);
+          	      
+          	      while (res.next()) {
+          	    	  
+          	    	  this.id = rs.getInt("id");
+          	      }
+          	      
+	              res.close(); 
+	              st.close();
+          	      conn.close();	               		   
+          	    }
+          	    catch (Exception ee)
+          	    {
+          	      System.err.println("Got an exception!");
+          	      System.err.println(ee.getMessage());
+          	    }
+            	
+            	new Notification("owner", 2, id);
             	
         	}else if(beforeTime){//To melos proswpikou (Sef,Dianomeas) kanei clockin prin thn wra enarxis
             	
