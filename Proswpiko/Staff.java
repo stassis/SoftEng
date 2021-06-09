@@ -54,7 +54,7 @@ public class Staff {
 			JTextField tf=new JTextField();
 			JTextField tfp=new JTextField();
 			JComboBox tfr=new JComboBox();
-			tfr.addItem("owner");tfr.addItem("chef");tfr.addItem("delivery");
+			tfr.addItem("Owner");tfr.addItem("Chef");tfr.addItem("Delivery");
 			
 			JLabel del = new JLabel("Enter ID and press DELETE to drop staff");
 			JLabel addpass = new JLabel("Password");
