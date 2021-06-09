@@ -1,11 +1,14 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,21 +22,7 @@ public class StoixeiaKartas extends JFrame {
 	private JTextField txtEtosLhksh;
 	private JTextField txtCCV2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StoixeiaKartas frame = new StoixeiaKartas();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -101,15 +90,56 @@ public class StoixeiaKartas extends JFrame {
 		txtCCV2.setColumns(10);
 		
 		JButton btnNewButton = new JButton("OK");
-		btnNewButton.addActionListener(new ActionListener()) {
+		btnNewButton.addActionListener((ActionListener) new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				dispose();
-				OloklhrwshPlhrwmhs scr = new OloklhrwshPlhrwmhs();
-				scr.setVisible(true);
+				String ArithmosKartas = txtArithmosKartas.getText();
+				String OnomaKartas = txtOnomaKartas.getText();
+				String MhnasLhkshs = txtMhnasLhkshs.getText();
+				String EtosLhkshs = txtEtosLhksh.getText();
+				String CCV2 = txtCCV2.getText();
+				
+				
+				if(!(ArithmosKartas.length() == 0 || OnomaKartas.length() == 0 || MhnasLhkshs.length() == 0)) {
+        			
+        			try {
+        			
+        			int intArithmosKartas=Integer.parseInt(ArithmosKartas);
+        			int intMhnasLhkshs=Integer.parseInt(MhnasLhkshs);
+        			int intEtosLhkshs=Integer.parseInt(EtosLhkshs);
+        			int intCCV2=Integer.parseInt(CCV2);
+        			
+        			
+        				if( intArithmosKartas > 0 && intMhnasLhkshs > 0 && intEtosLhkshs > 0 && intCCV2>0 ) {
+		        				
+        					
+        					dispose();
+        					OloklhrwshPlhrwmhs scr = new OloklhrwshPlhrwmhs();
+        					scr.setVisible(true);
+		
+		        			
+        				}else {
+            				
+            				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
+            				
+            			}
+        			}catch(NumberFormatException e1) {
+        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!"); 
+     				   
+     				 } 	
+        		}else {
+        			
+        			JOptionPane.showMessageDialog(null, "Symplhrwste stoixeia!");
+        			
+        		}
+				
+				
+				
+				
+				
 			}
 		});
-		btnNewButton.setBounds(133, 244, 89, 23);
+		btnNewButton.setBounds(202, 244, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lbl_logo = new JLabel("");
@@ -117,5 +147,17 @@ public class StoixeiaKartas extends JFrame {
 		lbl_logo.setIcon(new ImageIcon(img));
 		lbl_logo.setBounds(78, 284, 213, 128);
 		contentPane.add(lbl_logo);
+		
+		JButton btnNewButton_1 = new JButton("back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				
+				dispose();
+				new MainMenu();
+				
+			}
+		});
+		btnNewButton_1.setBounds(62, 244, 89, 23);
+		contentPane.add(btnNewButton_1);
 	}
 }

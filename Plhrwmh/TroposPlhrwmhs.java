@@ -31,7 +31,7 @@ public class TroposPlhrwmhs extends JFrame {
 	int qua2=0;
 	int qua3=0;
 	int qua4=0;
-	int amount=0;
+	public static int amount=0;
 
 	/**
 	 * Create the frame.
@@ -55,6 +55,7 @@ public class TroposPlhrwmhs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				type=false;
+				
 			}
 		});
 		rdbtn_metrhta.setSelected(true);
@@ -67,6 +68,7 @@ public class TroposPlhrwmhs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				type=true;
+				
 			}
 		});
 		buttonGroup.add(rdbtn_karta);
@@ -85,19 +87,19 @@ public class TroposPlhrwmhs extends JFrame {
 				if(type) {
 					
 					dispose();
-					StoixeiaKartas scr = new StoixeiaKartas(o);
+					StoixeiaKartas scr = new StoixeiaKartas();
 					scr.setVisible(true);
 					
 				}else {
 					
 					dispose();
-					OloklhrwshPlhrwmhs scr = new OloklhrwshPlhrwmhs(o);
+					OloklhrwshPlhrwmhs scr = new OloklhrwshPlhrwmhs();
 					scr.setVisible(true);
 					
 				}
 			}
 		});
-		btnOK.setBounds(127, 210, 89, 23);
+		btnOK.setBounds(202, 211, 89, 23);
 		contentPane.add(btnOK);
 		
 		qua1 = o.q1;
@@ -154,11 +156,23 @@ public class TroposPlhrwmhs extends JFrame {
 		
 		JLabel lblTotalCost = new JLabel("Total Cost:");
 		lblTotalCost.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblTotalCost.setBounds(83, 163, 94, 14);
+		lblTotalCost.setBounds(89, 150, 94, 14);
 		contentPane.add(lblTotalCost);
 		
 		JLabel lblCost = new JLabel(Integer.toString(amount));
-		lblCost.setBounds(170, 164, 46, 14);
+		lblCost.setBounds(176, 151, 46, 14);
 		contentPane.add(lblCost);
+		
+		JButton btnNewButton = new JButton("back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				new MainMenu();
+				
+			}
+		});
+		btnNewButton.setBounds(61, 211, 89, 23);
+		contentPane.add(btnNewButton);
 	}
 }
