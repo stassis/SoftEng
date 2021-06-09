@@ -102,15 +102,28 @@ public class TroposParadoshs extends JFrame {
 				}else {
 					del = "Entos tou xwrou";
 					dispose();
-					showTables scr = new showTables(0);
+					Table t = new Table(1);					
+					showTables scr = new showTables(t.getTables());
 					//scr.setVisible(true);
 					
 				}
 				
 			}
 		});
-		btn_OK.setBounds(142, 189, 89, 23);
+		btn_OK.setBounds(207, 190, 89, 23);
 		contentPane.add(btn_OK);
+		
+		JButton btnNewButton = new JButton("back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				new MainMenu();
+				
+			}
+		});
+		btnNewButton.setBounds(54, 190, 89, 23);
+		contentPane.add(btnNewButton);
 		
 	}
 }

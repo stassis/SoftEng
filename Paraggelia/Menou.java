@@ -72,7 +72,7 @@ public class Menou extends JFrame {
 				
 			}
 		});
-		btnOrder.setBounds(119, 237, 108, 23);
+		btnOrder.setBounds(183, 238, 108, 23);
 		contentPane.add(btnOrder);
 		
 		JLabel lbl_logo = new JLabel("");
@@ -209,6 +209,17 @@ JLabel lblNewLabel_1 = new JLabel("Quantity:");
 lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 lblNewLabel_1.setBounds(242, 36, 75, 14);
 contentPane.add(lblNewLabel_1);
+JButton btnNewButton = new JButton("back");
+btnNewButton.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+		
+		dispose();
+		new MainMenu();
+		
+	}
+});
+btnNewButton.setBounds(55, 238, 70, 23);
+contentPane.add(btnNewButton);
 
 
 	}

@@ -90,14 +90,63 @@ public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				
-			address = Address.getText();
-				
-				dispose();
-				Menou scr = new Menou();
-				scr.setVisible(true);
-			}
-		});
+				String textFieldName = Name.getText();
+        		String textFieldAddress = Address.getText();
+        		String textFieldOrofos = Floor.getText();
+        		String textFieldKoudouni = Door.getText();
+        		
+        		
+        		
+        		
+        		if(!(textFieldName.length() == 0 || textFieldAddress.length() == 0 || textFieldKoudouni.length() == 0)) {
+        			
+        			try {
+        				
+        			int intFieldOrofos=Integer.parseInt(textFieldOrofos);
+        			
+        				if(intFieldOrofos >= 0) {
+		            			
+		        				address = Address.getText();
+		        				
+								dispose();
+								Menou scr = new Menou();
+								scr.setVisible(true);
+		
+		        			
+        				}else {
+            				
+            				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
+            				
+            			}
+        			}catch(NumberFormatException e1) {
+        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!"); 
+     				   
+     				 } 	
+        		}else {
+        			
+        			JOptionPane.showMessageDialog(null, "Symplhrwste stoixeia!");
+        			
+        		}
+        		
 		btnOK.setBounds(134, 215, 89, 23);
 		contentPane.add(btnOK);
 	}
+
+});
+		btnOK.setBounds(196, 215, 89, 23);
+		contentPane.add(btnOK);
+		
+		JButton btnNewButton = new JButton("back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				dispose();
+				new MainMenu();
+			
+			}
+		});
+		btnNewButton.setBounds(55, 215, 89, 23);
+		contentPane.add(btnNewButton);
 }
+}	
