@@ -195,13 +195,13 @@ public class MainMenu {
 			JButton btnItems = new JButton("Order Items");
 			btnItems.setBounds(35,270,213,50);
 			f.getContentPane().add(btnItems);
-//			btnItems.addActionListener(new ActionListener(){  
-//	            public void actionPerformed(ActionEvent e){  
-//	            	
-//	            	f.dispose();
-//	            	new paraggelia_promitheion();
-//					paraggelia_promitheion.main(null);
-//	        }});
+			btnItems.addActionListener(new ActionListener(){  
+	            public void actionPerformed(ActionEvent e){  
+	            	
+	            	f.dispose();
+	            	new paraggelia_promitheion();
+					paraggelia_promitheion.main(null);
+	        }});
 			
 			logo.setBounds(41,330,200,150);
 			}
