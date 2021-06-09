@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
     
     
 public class MainMenu {
@@ -35,6 +37,9 @@ public class MainMenu {
         JFrame f = new JFrame("Welcome to P.Diner.A.");
 		f.setLayout(null);
 		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+        f.setIconImage(icon); 
+        
 		JToolBar toolBar = new JToolBar();
 		toolBar.setBounds(0,0,285,40);
 		f.getContentPane().add(toolBar);
@@ -175,6 +180,7 @@ public class MainMenu {
 	            public void actionPerformed(ActionEvent e){  
 	            	f.dispose();
 	            	new orario();
+					orario.main(null);
 	            	}});
 			
 			JButton btnMenu = new JButton("Menu");
@@ -184,11 +190,18 @@ public class MainMenu {
 	            public void actionPerformed(ActionEvent e){  
 	            	f.dispose();
 	            	new idioktitismenou();
-	            	}});
+	        }});
 			
 			JButton btnItems = new JButton("Order Items");
 			btnItems.setBounds(35,270,213,50);
 			f.getContentPane().add(btnItems);
+//			btnItems.addActionListener(new ActionListener(){  
+//	            public void actionPerformed(ActionEvent e){  
+//	            	
+//	            	f.dispose();
+//	            	new paraggelia_promitheion();
+//					paraggelia_promitheion.main(null);
+//	        }});
 			
 			logo.setBounds(41,330,200,150);
 			}

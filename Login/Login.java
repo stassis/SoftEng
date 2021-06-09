@@ -1,5 +1,7 @@
 
-	import java.awt.event.*;  
+	import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.*;  
     import javax.swing.*;
 
 import java.sql.*;
@@ -11,6 +13,9 @@ import java.sql.*;
         
         ImageIcon png = new ImageIcon("src/logo.png");
         JLabel logo = new JLabel(png);
+        
+        Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
+
         
         JButton bcust=new JButton("Customer");  
         JButton bstaff=new JButton("Staff");
@@ -30,7 +35,7 @@ import java.sql.*;
         
         public Login (){
         f.setBackground(new java.awt.Color(200, 200, 200));
-                
+        f.setIconImage(icon);        
         wlc.setBounds(42,41,150,30);                      
         msg.setBounds(42,59,150,30);  
         logo.setBounds(15,251,200,150);
