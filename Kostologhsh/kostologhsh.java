@@ -133,7 +133,10 @@ public class kostologhsh {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				String[] newprices = {newprice1.getText(), newprice2.getText(), newprice3.getText(), newprice4.getText()};
+				String[] newprices = {(newprice1.getText().isEmpty())? "0":newprice1.getText(), 
+									  (newprice2.getText().isEmpty())? "0":newprice2.getText(),
+									  (newprice3.getText().isEmpty())? "0":newprice3.getText(),
+									  (newprice4.getText().isEmpty())? "0":newprice4.getText()};
 				updatePrices(plates,newprices);
 				JOptionPane.showMessageDialog(null, "Prices Updated");
 				new kostologhsh();
@@ -163,10 +166,16 @@ public void updatePrices(String[] plates, String[] prices) {
 				Statement st = conn.createStatement();
 				
 				for(int i=1; i<=4; i++){
-				String sql = "UPDATE plate SET price = '"+Integer.parseInt(prices[i-1])+"' WHERE id = '"+i+"'";
-				st.execute(sql);
+					if(prices[i-1].equals("0") ) {}
+					else {
+					String sql = "UPDATE plate SET price = '"+Integer.parseInt(prices[i-1])+"' WHERE id = '"+i+"'";
+							st.execute(sql);}
 				}
 				conn.close();st.close();
 			}catch (ClassNotFoundException | SQLException e) {e.printStackTrace();} 
 	}
+
+
+
+public static void main(String[] Args) {new kostologhsh();}
 }
