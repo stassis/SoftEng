@@ -45,7 +45,7 @@ public class kritiki {
 		frmRating.setTitle("Rating");
 		frmRating.setBounds(100, 100, 450, 300);
 		frmRating.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmRating.getContentPane().setLayout(null);
+		frmRating.setLayout(null);
 		frmRating.setVisible(true);
 		
 		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
@@ -54,9 +54,10 @@ public class kritiki {
 		JButton btnkritiki = new JButton("Short Text");
 		btnkritiki.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmRating.setVisible(false);
-				kritiki1 k1 = new kritiki1();
-				k1.initialize();
+				
+				frmRating.dispose();
+				new kritiki1().initialize();
+				
 				
 			}
 		});
@@ -66,7 +67,8 @@ public class kritiki {
 		JButton btnNewButton_1 = new JButton("Rate with Stars");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmRating.setVisible(false);
+				
+				frmRating.dispose();
 				vathmologia v = new vathmologia();
 				v.initialize();
 			}
@@ -78,7 +80,17 @@ public class kritiki {
         JLabel logo = new JLabel(png);
 		logo.setBounds(110,113,200,150);
 		frmRating.getContentPane().add(logo);
+		
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmRating.dispose();
+				new MainMenu();
+			}
+		});
+		btnNewButton.setBounds(0, 10, 74, 23);
+		frmRating.getContentPane().add(btnNewButton);
 	}
-
 }
 	

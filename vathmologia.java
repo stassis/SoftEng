@@ -81,5 +81,16 @@ public class vathmologia {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel.setBounds(10, 58, 105, 14);
 		frmRating.getContentPane().add(lblNewLabel);
+		
+		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmRating.dispose();
+				new kritiki().initialize();
+			}
+		});
+		btnNewButton_1.setBounds(0, 11, 65, 23);
+		frmRating.getContentPane().add(btnNewButton_1);
 	}
 }

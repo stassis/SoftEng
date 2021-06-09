@@ -48,7 +48,7 @@ public class kritiki1 {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 452, 393);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frame.setLayout(null);
 		frame.setVisible(true);
 		
 		JEditorPane editorPane = new JEditorPane();
@@ -77,6 +77,17 @@ public class kritiki1 {
         JLabel logo = new JLabel(png);
 		logo.setBounds(121,184,200,150);
 		frame.getContentPane().add(logo);
+		
+		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.dispose();
+				new kritiki().initialize();
+			}
+		});
+		btnNewButton_1.setBounds(367, 32, 71, 23);
+		frame.getContentPane().add(btnNewButton_1);
 		
 		Image icon = Toolkit.getDefaultToolkit().getImage("src/logo.png"); 
         frame.setIconImage(icon);
