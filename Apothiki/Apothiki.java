@@ -89,8 +89,6 @@ public class Apothiki {
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		
-        		frame.dispose();
-        		
         		AlloiwmenaYlika newwindow;
 				try {
 					
@@ -106,5 +104,16 @@ public class Apothiki {
         });
         btnNewButton.setBounds(116, 150, 193, 25);
         frame.getContentPane().add(btnNewButton);
+        
+        JButton home = new JButton("Home");
+        home.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		frame.dispose();
+        		new MainMenu();
+        	}
+        });
+        home.setBounds(0, 11, 76, 23);
+        frame.getContentPane().add(home);
 	}
 }
