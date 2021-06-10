@@ -65,7 +65,7 @@ public class Menou extends JFrame {
 				
 				dispose();
 				Order o = new Order(nd,(int)spinner1.getValue(),(int)spinner2.getValue(),(int)spinner3.getValue(),(int)spinner4.getValue(), d , orderstable ,address);
-				new Notification ("chef",0,"");
+				new Notification ("chef",0,"1");
 				TroposPlhrwmhs scr = new TroposPlhrwmhs(o);
 				scr.setVisible(true);
 				
