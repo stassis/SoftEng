@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.JScrollPane;
 import javax.swing.AbstractListModel;
@@ -63,12 +64,19 @@ public class Menou extends JFrame {
 		btnOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				if(!((int)spinner1.getValue() == 0 && (int)spinner2.getValue() == 0 && (int)spinner3.getValue() == 0 && (int)spinner4.getValue() == 0)) {
+				
+				
 				dispose();
 				Order o = new Order(nd,(int)spinner1.getValue(),(int)spinner2.getValue(),(int)spinner3.getValue(),(int)spinner4.getValue(), d , orderstable ,address);
 				new Notification ("chef",0,"1");
 				TroposPlhrwmhs scr = new TroposPlhrwmhs(o);
 				scr.setVisible(true);
 				
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Choose a plate!");
+				}
 			}
 		});
 		btnOrder.setBounds(183, 238, 108, 23);
