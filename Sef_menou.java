@@ -146,19 +146,21 @@ public class Sef_menou {
 	
 
 	
-public void updatePlates(String[] plates, String[] Newplate) {
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
-				Statement st = conn.createStatement();
-				
-				for(int i=1; i<=4; i++){
-					String sql = "UPDATE plate SET name = '"+(Newplate[i-1])+"' WHERE id = '"+i+"'";
-							st.execute(sql);}
-				conn.close();st.close();
-			}catch (ClassNotFoundException | SQLException e) {e.printStackTrace();} 
-	}
-
+	public void updatePlates(String[] plates, String[] Newplate) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdinera","root","");
+			Statement st = conn.createStatement();
+			
+			for(int i=1; i<=4; i++){
+				if(Newplate[i-1].equals("0") ) {}
+				else {
+				String sql = "UPDATE plate SET name = '"+(Newplate[i-1])+"' WHERE id = '"+i+"'";
+						st.execute(sql);}
+			}
+			conn.close();st.close();
+		}catch (ClassNotFoundException | SQLException e) {e.printStackTrace();} 
+}
 
 
 public static void main(String[] Args) {new Sef_menou();}
