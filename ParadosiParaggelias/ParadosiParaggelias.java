@@ -49,7 +49,7 @@ public class ParadosiParaggelias {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("P.Diner.A. Paradosi Paraggelias");
+		frame = new JFrame("P.Diner.A. Order Delivery");
 		frame.setBounds(100, 100, 451, 491);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

@@ -27,7 +27,7 @@ public class Clockscreen extends JFrame {
 	
 	
 	public Clockscreen() {
-		setTitle("Orario");
+		setTitle("Clock Screen");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 444, 505);

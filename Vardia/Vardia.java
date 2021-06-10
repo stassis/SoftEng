@@ -36,7 +36,7 @@ public class Vardia extends JFrame {
 	 * Create the frame.
 	 */
 	public Vardia() {
-		setTitle("Vardia");
+		setTitle("Shift");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 428, 419);
 		contentPane = new JPanel();
