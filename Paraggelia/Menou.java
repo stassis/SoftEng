@@ -7,12 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,6 +65,7 @@ public class Menou extends JFrame {
 				
 				dispose();
 				Order o = new Order(nd,(int)spinner1.getValue(),(int)spinner2.getValue(),(int)spinner3.getValue(),(int)spinner4.getValue(), d , orderstable ,address);
+				new Notification ("chef",0,"");
 				TroposPlhrwmhs scr = new TroposPlhrwmhs(o);
 				scr.setVisible(true);
 				
@@ -209,6 +208,7 @@ JLabel lblNewLabel_1 = new JLabel("Quantity:");
 lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 lblNewLabel_1.setBounds(242, 36, 75, 14);
 contentPane.add(lblNewLabel_1);
+
 JButton btnNewButton = new JButton("back");
 btnNewButton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent e) {
