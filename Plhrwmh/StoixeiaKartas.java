@@ -120,16 +120,16 @@ public class StoixeiaKartas extends JFrame {
 		        			
         				}else {
             				
-            				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!");
+            				JOptionPane.showMessageDialog(null, "Enter positive values(integer)!");
             				
             			}
         			}catch(NumberFormatException e1) {
-        				JOptionPane.showMessageDialog(null, "Eisagete thetikes times(akeraies)!"); 
+        				JOptionPane.showMessageDialog(null, "Enter positive values(integer)!"); 
      				   
      				 } 	
         		}else {
         			
-        			JOptionPane.showMessageDialog(null, "Symplhrwste stoixeia!");
+        			JOptionPane.showMessageDialog(null, "Please fill in the textfields!");
         			
         		}
 				
