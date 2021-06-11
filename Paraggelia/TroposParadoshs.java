@@ -26,7 +26,7 @@ public class TroposParadoshs extends JFrame {
 	/*** Create the frame.*/
 	public TroposParadoshs() {
 		
-		setTitle("P.Diner.A Tropos Paradoshs");
+		setTitle("P.Diner.A Delivery method");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 450);
 		contentPane = new JPanel();
@@ -34,11 +34,11 @@ public class TroposParadoshs extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_msg = new JLabel("Epilekste tropo paradoshs:");
+		JLabel lbl_msg = new JLabel("Choose delivery method:");
 		lbl_msg.setBounds(125, 28, 156, 14);
 		contentPane.add(lbl_msg);
 		
-		JRadioButton rdbtn_entos = new JRadioButton("Entos tou xwrou");
+		JRadioButton rdbtn_entos = new JRadioButton("Inside store");
 		rdbtn_entos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -51,7 +51,7 @@ public class TroposParadoshs extends JFrame {
 		rdbtn_entos.setBounds(125, 64, 150, 23);
 		contentPane.add(rdbtn_entos);
 		
-		JRadioButton rdbtn_delivery = new JRadioButton("Delivery sto spiti");
+		JRadioButton rdbtn_delivery = new JRadioButton("Delivery at home");
 		rdbtn_delivery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -102,27 +102,27 @@ public class TroposParadoshs extends JFrame {
 				}else {
 					del = "Entos tou xwrou";
 					dispose();
-					Table t = new Table(1);
-					new showTables(t.getTables());
-					//showTables scr = new showTables();
+					Table t = new Table(1);					
+					showTables scr = new showTables(t.getTables());
 					//scr.setVisible(true);
 					
 				}
 				
 			}
 		});
-		btn_OK.setBounds(142, 189, 89, 23);
+		btn_OK.setBounds(207, 190, 89, 23);
 		contentPane.add(btn_OK);
 		
-		JButton btnNewButton = new JButton("Back");
+		JButton btnNewButton = new JButton("back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
 				new MainMenu();
+				
 			}
 		});
-		btnNewButton.setBounds(0, 11, 77, 23);
+		btnNewButton.setBounds(54, 190, 89, 23);
 		contentPane.add(btnNewButton);
 		
 	}
