@@ -54,17 +54,22 @@ public class orario {
         logo.setBounds(116, 236, 202, 111);
         frmPdineraTimetable.getContentPane().add(logo);
 		
-		JButton btnNewButton = new JButton("Timetable");
+		JButton btnNewButton = new JButton("Edit Timetable");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				frmPdineraTimetable.dispose();
-				orario_info oi= new orario_info();
-				oi.setVisible(true);
+			//	frmPdineraTimetable.dispose();
+				try {
+					frmPdineraTimetable.dispose();
+					eisagogi_stoixeion es= new eisagogi_stoixeion();
+					es.setVisible(true);
+					}catch (Exception e1) {
+						e1.printStackTrace();
+					}
 			
 			}
 		});
-		btnNewButton.setBounds(167, 63, 89, 23);
+		btnNewButton.setBounds(148, 69, 132, 42);
 		frmPdineraTimetable.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Back");
