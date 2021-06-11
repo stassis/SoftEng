@@ -49,9 +49,17 @@ public class Menou extends JFrame {
 	public Menou() {
 		
 		d = TroposParadoshs.del;
-		orderstable = showTables.table; 
-		address = Delivery_SumplhrwshStoixeiwn.address;
 		
+		if(d == "Delivery" ) {
+			
+			address = Delivery_SumplhrwshStoixeiwn.address;
+		
+		}else if (d == "Entos tou xwrou") {
+		
+			orderstable = showTables.table; }
+		
+		
+		//address = Delivery_SumplhrwshStoixeiwn.address;
 		setTitle("P.Diner.A Menou");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 450);
