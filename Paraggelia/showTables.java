@@ -73,7 +73,14 @@ public class showTables {
 				scr.setVisible(true);
 				}});  
 		
-				
+		JButton btnback = new JButton("back");
+		btnback.setBounds(295, 438, 89, 23);
+		stf.getContentPane().add(btnback);
+		btnback.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {
+			stf.dispose(); 
+        	TroposParadoshs scr=new TroposParadoshs();
+        	scr.setVisible(true);
+			}}); 		
 	}
 
 }
