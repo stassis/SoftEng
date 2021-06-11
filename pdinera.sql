@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 12:19 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jun 11, 2021 at 12:56 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,6 +60,23 @@ CREATE TABLE `food` (
   `Oriaellipsis` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `food`
+--
+
+INSERT INTO `food` (`Fagito`, `Posotita`, `Imerominia`, `Oriaellipsis`) VALUES
+('mudia', 100, '2021-06-09', 10),
+('garides', 95, '2021-06-09', 10),
+('kotopoulo', 29, '2021-06-09', 2),
+('mosxari', 15, '2021-06-09', 2),
+('xoirino', 10, '2021-06-09', 2),
+('makaronia', 35, '2021-06-09', 2),
+('mapa', 40, '2021-06-09', 2),
+('marouli', 39, '2021-06-09', 5),
+('ryzi', 20, '2021-06-09', 21),
+('manitaria', 47, '2021-06-09', 2),
+('Cheese', 2, '2021-06-09', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -76,7 +93,7 @@ CREATE TABLE `lastlog` (
 --
 
 INSERT INTO `lastlog` (`id`, `Role`) VALUES
-(1, 'Owner');
+(22, 'Delivery');
 
 -- --------------------------------------------------------
 
@@ -98,7 +115,11 @@ CREATE TABLE `notification` (
 INSERT INTO `notification` (`id`, `role`, `type`, `info`) VALUES
 (3, 'delivery', 1, '1'),
 (4, 'owner', 1, '1'),
-(22, 'delivery', 1, '18');
+(22, 'delivery', 1, '18'),
+(23, 'delivery', 1, '17'),
+(24, 'delivery', 1, '24'),
+(28, 'chef', 3, 'Cheese shortage'),
+(33, 'chef', 3, 'ryzi shortage');
 
 -- --------------------------------------------------------
 
@@ -140,6 +161,25 @@ CREATE TABLE `orders` (
   `orderstable` int(10) DEFAULT NULL,
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_id`, `quantity1`, `quantity2`, `quantity3`, `quantity4`, `flag`, `delivery`, `orderstable`, `address`) VALUES
+(17, 17, 0, 1, 1, 2, 'ready', 'Entos tou xwrou', 4, NULL),
+(24, 12, 0, 3, 2, 0, 'ready', 'TakeAway', 0, NULL),
+(26, 12, 0, 0, 2, 0, 'canceled', 'TakeAway', 0, NULL),
+(27, 17, 1, 3, 2, 0, 'delivered', 'Entos tou xwrou', 3, NULL),
+(30, 14, 2, 2, 3, 4, 'submitted', 'Delivery', 0, 'Kalamata 99'),
+(31, 18, 0, 3, 2, 5, 'delivered', 'Entos tou xwrou', 1, NULL),
+(32, 18, 0, 3, 1, 0, 'submitted', 'Delivery', 1, 'Salonika 9'),
+(33, 18, 0, 0, 0, 3, 'submitted', 'TakeAway', 1, NULL),
+(34, 18, 2, 0, 2, 1, 'delivered', 'Delivery', 1, 'Creta 88'),
+(35, 18, 0, 3, 3, 0, 'submitted', 'Entos tou xwrou', 3, NULL),
+(36, 12, 2, 2, 1, 0, 'submitted', 'Delivery', 0, 'Patra 33'),
+(37, 21, 0, 3, 3, 0, 'submitted', 'Delivery', 0, 'Georgioy 1'),
+(38, 21, 0, 2, 2, 0, 'submitted', 'Delivery', 0, 'Athens 23');
 
 -- --------------------------------------------------------
 
@@ -199,7 +239,7 @@ CREATE TABLE `tables` (
 --
 
 INSERT INTO `tables` (`id`, `isOccupied`) VALUES
-(1, 1),
+(1, 0),
 (2, 0),
 (3, 0),
 (4, 0),
@@ -229,7 +269,10 @@ INSERT INTO `user2` (`id`, `Role`, `Password`) VALUES
 (14, 'Customer', 'panos'),
 (15, 'Delivery', 'velos'),
 (16, 'Delivery', 'nomos.ilias'),
-(17, 'Customer', 'andreas');
+(17, 'Customer', 'andreas'),
+(18, 'Customer', 'ch1'),
+(21, 'Customer', 'stefanos'),
+(22, 'Delivery', 'stefanos');
 
 --
 -- Indexes for dumped tables
@@ -261,19 +304,19 @@ ALTER TABLE `user2`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user2`
 --
 ALTER TABLE `user2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
