@@ -28,7 +28,7 @@ public class StoixeiaKartas extends JFrame {
 	 * Create the frame.
 	 */
 	public StoixeiaKartas() {
-		setTitle("P.Diner.A Plhrwmh-Stoixeia Kartas");
+		setTitle("P.Diner.A Plhrwmh-Card details");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 450);
 		contentPane = new JPanel();

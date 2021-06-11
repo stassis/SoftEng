@@ -31,7 +31,7 @@ public class Delivery_SumplhrwshStoixeiwn extends JFrame {
 	 * Create the frame.
 	 */
 	public Delivery_SumplhrwshStoixeiwn() {
-		setTitle("P.Diner.A Delivery-Stoixeia Paraggelias");
+		setTitle("P.Diner.A Delivery-Order details");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 450);
 		contentPane = new JPanel();
