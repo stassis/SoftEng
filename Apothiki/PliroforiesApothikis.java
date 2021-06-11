@@ -55,7 +55,7 @@ public class PliroforiesApothikis {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("P.Diner.A. Diathesima Ylika");
+		frame = new JFrame("P.Diner.A. Storage Info");
 		frame.setBounds(100, 100, 440, 402);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

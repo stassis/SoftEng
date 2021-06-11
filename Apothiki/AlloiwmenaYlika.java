@@ -50,7 +50,7 @@ public class AlloiwmenaYlika {
 	 * @throws SQLException 
 	 */
 	private void initialize() throws SQLException {
-		frame = new JFrame("P.Diner.A. Alloiwmena Ylika");
+		frame = new JFrame("P.Diner.A. Expired Ingredients");
 		frame.setBounds(100, 100, 436, 402);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
