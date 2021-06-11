@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2021 at 08:37 PM
+-- Generation Time: Jun 11, 2021 at 12:19 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -60,24 +60,6 @@ CREATE TABLE `food` (
   `Oriaellipsis` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `food`
---
-
-INSERT INTO `food` (`Fagito`, `Posotita`, `Imerominia`, `Oriaellipsis`) VALUES
-('KarpUZI', 20, '2021-06-04', 2),
-('Ntomates', 30, '2021-06-04', 2),
-('PePony', 15, '2021-06-04', 2),
-('Zanzikin', 25, '2021-06-04', 15),
-('Yaoyrttt', 19, '2021-06-04', 2),
-('Xoirino', 27, '2021-06-04', 2),
-('Chicken', 41, '2021-06-04', 2),
-('Papardelles', 39, '2021-06-04', 2),
-('Spaghetti6', 50, '2021-06-04', 2),
-('LoukaNikos', 60, '2021-06-04', 2),
-('FetaIpiros', 29, '2021-06-04', 2),
-('KimAss', 45, '2021-06-04', 10);
-
 -- --------------------------------------------------------
 
 --
@@ -94,8 +76,7 @@ CREATE TABLE `lastlog` (
 --
 
 INSERT INTO `lastlog` (`id`, `Role`) VALUES
-(17, 'Customer');
-
+(1, 'Owner');
 
 -- --------------------------------------------------------
 
@@ -119,11 +100,28 @@ INSERT INTO `notification` (`id`, `role`, `type`, `info`) VALUES
 (4, 'owner', 1, '1'),
 (22, 'delivery', 1, '18');
 
-ALTER TABLE `notification`
-  ADD PRIMARY KEY (`id`);
-  
-ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orario`
+--
+
+CREATE TABLE `orario` (
+  `Employee` text NOT NULL,
+  `Clock_In` text NOT NULL,
+  `Clock_Out` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orario`
+--
+
+INSERT INTO `orario` (`Employee`, `Clock_In`, `Clock_Out`) VALUES
+('chef', '8', '16'),
+('chef2', '9', '5'),
+('delivery', '13', '23'),
+('delivery2', '17', '00');
+
 -- --------------------------------------------------------
 
 --
@@ -142,7 +140,6 @@ CREATE TABLE `orders` (
   `orderstable` int(10) DEFAULT NULL,
   `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 -- --------------------------------------------------------
 
@@ -239,6 +236,12 @@ INSERT INTO `user2` (`id`, `Role`, `Password`) VALUES
 --
 
 --
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -253,6 +256,12 @@ ALTER TABLE `user2`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `orders`
