@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 12:56 PM
+-- Generation Time: Jun 11, 2021 at 05:14 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -67,15 +67,15 @@ CREATE TABLE `food` (
 INSERT INTO `food` (`Fagito`, `Posotita`, `Imerominia`, `Oriaellipsis`) VALUES
 ('mudia', 100, '2021-06-09', 10),
 ('garides', 95, '2021-06-09', 10),
-('kotopoulo', 29, '2021-06-09', 2),
-('mosxari', 15, '2021-06-09', 2),
+('kotopoulo', 21, '2021-06-09', 2),
+('mosxari', 11, '2021-06-09', 2),
 ('xoirino', 10, '2021-06-09', 2),
-('makaronia', 35, '2021-06-09', 2),
+('makaronia', 12, '2021-06-09', 2),
 ('mapa', 40, '2021-06-09', 2),
 ('marouli', 39, '2021-06-09', 5),
-('ryzi', 20, '2021-06-09', 21),
+('ryzi', 18, '2021-06-09', 21),
 ('manitaria', 47, '2021-06-09', 2),
-('Cheese', 2, '2021-06-09', 2);
+('Cheese', 1, '2021-06-09', 2);
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,18 @@ INSERT INTO `notification` (`id`, `role`, `type`, `info`) VALUES
 (23, 'delivery', 1, '17'),
 (24, 'delivery', 1, '24'),
 (28, 'chef', 3, 'Cheese shortage'),
-(33, 'chef', 3, 'ryzi shortage');
+(33, 'chef', 3, 'ryzi shortage'),
+(34, 'chef', 0, '1'),
+(35, 'chef', 0, '1'),
+(36, 'delivery', 1, '30'),
+(37, 'delivery', 1, '37'),
+(38, 'delivery', 1, '39'),
+(39, 'delivery', 1, '35'),
+(40, 'chef', 0, '1'),
+(41, 'chef', 0, '1'),
+(42, 'chef', 0, '1'),
+(43, 'delivery', 1, '43'),
+(44, 'delivery', 1, '42');
 
 -- --------------------------------------------------------
 
@@ -171,15 +182,20 @@ INSERT INTO `orders` (`order_id`, `customer_id`, `quantity1`, `quantity2`, `quan
 (24, 12, 0, 3, 2, 0, 'ready', 'TakeAway', 0, NULL),
 (26, 12, 0, 0, 2, 0, 'canceled', 'TakeAway', 0, NULL),
 (27, 17, 1, 3, 2, 0, 'delivered', 'Entos tou xwrou', 3, NULL),
-(30, 14, 2, 2, 3, 4, 'submitted', 'Delivery', 0, 'Kalamata 99'),
+(30, 14, 2, 2, 3, 4, 'ready', 'Delivery', 0, 'Kalamata 99'),
 (31, 18, 0, 3, 2, 5, 'delivered', 'Entos tou xwrou', 1, NULL),
 (32, 18, 0, 3, 1, 0, 'submitted', 'Delivery', 1, 'Salonika 9'),
 (33, 18, 0, 0, 0, 3, 'submitted', 'TakeAway', 1, NULL),
 (34, 18, 2, 0, 2, 1, 'delivered', 'Delivery', 1, 'Creta 88'),
-(35, 18, 0, 3, 3, 0, 'submitted', 'Entos tou xwrou', 3, NULL),
+(35, 18, 0, 3, 3, 0, 'delivered', 'Entos tou xwrou', 3, NULL),
 (36, 12, 2, 2, 1, 0, 'submitted', 'Delivery', 0, 'Patra 33'),
-(37, 21, 0, 3, 3, 0, 'submitted', 'Delivery', 0, 'Georgioy 1'),
-(38, 21, 0, 2, 2, 0, 'submitted', 'Delivery', 0, 'Athens 23');
+(37, 21, 0, 3, 3, 0, 'ready', 'Delivery', 0, 'Georgioy 1'),
+(38, 21, 0, 2, 2, 0, 'submitted', 'Delivery', 0, 'Athens 23'),
+(39, 21, 0, 6, 3, 0, 'ready', 'Entos tou xwrou', 3, NULL),
+(40, 21, 0, 0, 3, 0, 'submitted', 'TakeAway', 0, NULL),
+(41, 21, 2, 2, 0, 3, 'submitted', 'Delivery', 0, 'Samos 29'),
+(42, 21, 0, 0, 0, 3, 'ready', 'TakeAway', 0, NULL),
+(43, 21, 1, 0, 0, 0, 'ready', 'Entos tou xwrou', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -240,8 +256,8 @@ CREATE TABLE `tables` (
 
 INSERT INTO `tables` (`id`, `isOccupied`) VALUES
 (1, 0),
-(2, 0),
-(3, 0),
+(2, 1),
+(3, 1),
 (4, 0),
 (5, 0);
 
@@ -304,13 +320,13 @@ ALTER TABLE `user2`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `user2`
