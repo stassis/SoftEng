@@ -43,12 +43,12 @@ public class OloklhrwshPlhrwmhs extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("H paraggelia sas oloklhrwthike,");
+		JLabel lblNewLabel = new JLabel("Order submitted. It will be delivered soon.");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setBounds(70, 78, 231, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("euxaristoume gia thn protimhsh sas.");
+		JLabel lblNewLabel_1 = new JLabel("Thank you for choosing us! :/)");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(70, 94, 231, 14);
 		contentPane.add(lblNewLabel_1);
