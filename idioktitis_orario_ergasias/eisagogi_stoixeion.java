@@ -179,7 +179,8 @@ try {
 								
 				
 				JOptionPane.showMessageDialog(null, "Saved!");
-				dispose();				
+				dispose();
+				frame.dispose();
 				orario or= new orario();
 				or.showmain();
 			}
